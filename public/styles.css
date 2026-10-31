@@ -34,3 +34,17 @@ main.doc h1{font-size:22px;margin:0 0 4px}main.doc h2{font-size:15px;margin:22px
 #cc .b{display:flex;gap:8px}#cc button{font:inherit;font-weight:600;padding:6px 14px;border-radius:999px;cursor:pointer;border:1px solid var(--border);background:#fff;color:var(--text)}
 #cc button.ok{background:var(--accent);border-color:var(--accent);color:#fff}
 #legal button.lnk{font:inherit;color:inherit;background:none;border:0;padding:0;text-decoration:underline;cursor:pointer}
+/* site header + nav */
+header.site{display:flex;justify-content:space-between;gap:12px}
+header.site .ttl{color:inherit;text-decoration:none;font-weight:700;text-align:left}
+.nav{display:flex;gap:22px}.nav a{color:var(--text);text-decoration:none;font-weight:500}.nav a:hover,.nav a[aria-current="page"]{color:var(--accent)}
+.navbtn{display:none;width:36px;height:32px;margin:-4px -6px -4px 0;padding:0;border:0;border-radius:8px;background:none;color:var(--text);cursor:pointer}
+.navbtn span,.navbtn span::before,.navbtn span::after{display:block;position:relative;width:18px;height:1.5px;margin:0 auto;background:currentColor;transition:transform .2s,background .2s}
+.navbtn span::before,.navbtn span::after{content:"";position:absolute;left:0}.navbtn span::before{top:-6px}.navbtn span::after{top:6px}
+.navbtn[aria-expanded="true"] span{background:transparent}.navbtn[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg)}.navbtn[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg)}
+.navbtn:focus-visible,.nav a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:640px){
+ .navbtn{display:block}
+ .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;padding:6px 0;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);box-shadow:0 10px 24px rgba(20,50,100,.08)}
+ .nav.open{display:flex}.nav a{padding:12px 18px;font-size:15px}
+}
