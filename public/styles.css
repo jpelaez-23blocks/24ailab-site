@@ -18,3 +18,9 @@ a{color:var(--accent);text-decoration:none;font-weight:600}a:hover{text-decorati
 .contact{color:var(--muted);margin-top:22px}
 #legal{text-align:center;font-size:10.5px;line-height:15px;padding:6px 12px max(6px,env(safe-area-inset-bottom));color:var(--muted2);background:var(--soft);border-top:1px solid var(--border2)}
 #legal a{color:inherit;font-weight:400}
+/* team globe */
+.team{width:100%;max-width:640px;margin-top:24px;text-align:center}
+#globe{position:relative;width:100%;height:min(80vw,460px);border-radius:var(--radius);overflow:hidden;cursor:grab}
+#globe .gfb{display:none}#globe.noglobe{height:auto;padding:18px;background:var(--hl);border:1px solid var(--border)}#globe.noglobe .gfb{display:block;margin:0;color:var(--muted)}
+.gcap{color:var(--muted);font-size:12px;margin:8px 0 0}
+.tpin{transform:translate(-50%,-50%);border-radius:999px;background:var(--accent);color:#fff;font:600 11px/1 var(--font);padding:5px 9px;border:2px solid #fff;box-shadow:0 1px 4px rgba(0,40,90,.35);white-space:nowrap;pointer-events:none}
