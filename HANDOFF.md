@@ -89,7 +89,7 @@ HANDOFF.md          this file
 - [ ] Confirm `www` → apex redirect is active (Bulk/Redirect Rule if Pages doesn't do it).
 - [ ] Verify the domain in Google Search Console and submit https://24ailab.com/sitemap.xml.
 - [ ] Add `sameAs` to the JSON-LD once 2xAI Lab social or company links exist.
-- [ ] Add apple-touch-icon / PNG favicons (only SVG now).
+- [x] Add apple-touch-icon / PNG favicons (done: PNG 16/32, apple-touch-icon 180, icon-192/512, site.webmanifest).
 - [ ] Consider self-hosting globe.gl or a smaller countries file if performance matters.
 - [ ] Projects section: add new projects as they launch (FM is the only one).
 - [ ] Optional: privacy/terms pages if analytics or forms are added (FM has examples).
