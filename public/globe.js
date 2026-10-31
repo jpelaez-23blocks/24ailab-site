@@ -21,7 +21,8 @@
       var ctl = w.controls(); ctl.enableDamping = true; ctl.minDistance = 160; ctl.maxDistance = 600;
       ctl.autoRotate = !matchMedia('(prefers-reduced-motion: reduce)').matches; ctl.autoRotateSpeed = 0.5;
       fetch('/countries.geojson').then(function (r) { return r.json(); }).then(function (g) { w.hexPolygonsData(g.features); }).catch(function () {});
-      addEventListener('resize', function () { w.width(el.clientWidth).height(el.clientHeight); });
+      var fit = function () { w.width(el.clientWidth).height(el.clientHeight); }; fit(); setTimeout(fit, 50);
+      if (window.ResizeObserver) new ResizeObserver(fit).observe(el); else addEventListener('resize', fit);
     } catch (e) { fb(); }
   }
   var s = document.createElement('script'); s.src = 'https://cdn.jsdelivr.net/npm/globe.gl@2'; s.async = true;
