@@ -12,7 +12,7 @@
   var el;
   function build(){
     el=document.createElement('div');el.id='cc';el.setAttribute('role','dialog');el.setAttribute('aria-label','Cookie consent');el.hidden=true;
-    el.innerHTML='<p>We may use cookies for anonymous, aggregate usage stats. See our <a href="/privacy.html">Privacy Policy</a>.</p><div class="b"><button type="button" class="no">Decline</button><button type="button" class="ok">Accept</button></div>';
+    el.innerHTML='<p>We may use cookies for anonymous, aggregate usage stats. See our <a href="/privacy">Privacy Policy</a>.</p><div class="b"><button type="button" class="no">Decline</button><button type="button" class="ok">Accept</button></div>';
     el.querySelector('.ok').onclick=function(){set('accepted');el.hidden=true;loadAnalytics()};
     el.querySelector('.no').onclick=function(){set('declined');el.hidden=true};
     document.body.appendChild(el);
