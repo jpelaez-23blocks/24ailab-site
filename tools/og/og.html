@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- 2xAI Lab social share image template (1200x630). Render: node tools/og/render.js  (see README.md)
+     ?v=site → public/og-image.png   ?v=fm → public/fm/og-image.png -->
+<html><head><meta charset="utf-8"><style>
+:root{--text:#1d2a3a;--muted:#64748b;--accent:#1a6fd6;--hl:#eaf3ff;
+ --serif:"New York","Iowan Old Style","Newsreader",Georgia,serif;
+ --sans:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;
+ --mono:ui-monospace,"SF Mono","DM Mono",Menlo,monospace}
+*{box-sizing:border-box}html,body{margin:0}
+body{width:1200px;height:630px;overflow:hidden;position:relative;color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;
+ background:radial-gradient(circle at 12% 8%,#eaf3ff 0,transparent 46%),radial-gradient(circle at 78% 60%,#f1f7fe 0,transparent 55%),#fff}
+canvas{position:absolute;inset:0}
+.copy{position:absolute;left:84px;top:0;bottom:0;width:560px;display:flex;flex-direction:column;justify-content:center}
+.mark{position:absolute;left:84px;top:64px;font:650 26px/1 var(--sans);letter-spacing:-.01em}
+.mark i{font-style:normal;color:var(--accent)}
+.eyebrow{font:500 17px/1 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 26px}
+h1{font:400 118px/.98 var(--serif);letter-spacing:-.035em;margin:0}
+h1 em{font-style:italic;color:var(--accent)}
+.sub{font:400 44px/1.12 var(--serif);letter-spacing:-.02em;margin:18px 0 0;color:var(--text)}
+.url{position:absolute;left:84px;bottom:60px;font:500 18px/1 var(--mono);letter-spacing:.06em;color:var(--muted);display:flex;align-items:center;gap:14px}
+.url:before{content:"";width:36px;height:2px;background:var(--accent)}
+.pin{position:absolute;transform:translate(-50%,-50%);border-radius:999px;background:var(--accent);color:#fff;font:600 15px/1 var(--sans);padding:7px 12px;border:2.5px solid #fff;box-shadow:0 2px 8px rgba(0,40,90,.3);white-space:nowrap}
+</style></head><body><canvas id="c" width="2400" height="1260" style="width:1200px;height:630px"></canvas><div id="ui"></div>
+<script>
+const V=new URLSearchParams(location.search).get('v')||'site';
+const CFG={
+ site:{cx:900,cy:330,R:285,lat:18,lng:-55,dots:false,
+  pins:[['Colorado',39,-105.5],['Colombia',4.6,-74.1],['Singapore',1.35,103.82]],
+  html:'<div class="mark">2<i>x</i>AI Lab</div><div class="copy"><h1>AI meets<br><em>craft.</em></h1></div><div class="url">24ailab.com</div>'},
+ fm:{cx:880,cy:330,R:300,lat:32,lng:8,dots:true,pins:null,
+  html:'<div class="mark">2<i>x</i>AI Lab</div><div class="copy"><p class="eyebrow">1979 → 2026</p><h1 style="font-size:150px">FM</h1><p class="sub">A short history<br>of <em style="color:var(--accent)">listening</em>.</p></div><div class="url">24ailab.com/fm · from 2xAI Lab</div>'}
+}[V];
+document.getElementById('ui').innerHTML=CFG.html;
+const c=document.getElementById('c'),x=c.getContext('2d');x.scale(2,2);
+const r=Math.PI/180,l0=CFG.lng*r,p0=CFG.lat*r;
+function proj(lat,lng){lat*=r;lng*=r;const cc=Math.sin(p0)*Math.sin(lat)+Math.cos(p0)*Math.cos(lat)*Math.cos(lng-l0);
+ return [CFG.cx+CFG.R*Math.cos(lat)*Math.sin(lng-l0),CFG.cy-CFG.R*(Math.cos(p0)*Math.sin(lat)-Math.sin(p0)*Math.cos(lat)*Math.cos(lng-l0)),cc];}
+(async()=>{
+ const {cx,cy,R}=CFG;
+ // atmosphere
+ let g=x.createRadialGradient(cx,cy,R*.9,cx,cy,R*1.16);g.addColorStop(0,'rgba(156,201,255,.55)');g.addColorStop(1,'rgba(156,201,255,0)');x.fillStyle=g;x.beginPath();x.arc(cx,cy,R*1.16,0,7);x.fill();
+ // sphere
+ g=x.createRadialGradient(cx-R*.35,cy-R*.4,R*.1,cx,cy,R);g.addColorStop(0,'#fbfdff');g.addColorStop(.7,'#e8f2fc');g.addColorStop(1,'#d3e3f4');x.fillStyle=g;x.beginPath();x.arc(cx,cy,R,0,7);x.fill();
+ // countries
+ const geo=await (await fetch('/public/countries.geojson')).json();
+ x.strokeStyle='#a9bdd3';x.lineWidth=1;x.lineJoin='round';
+ for(const f of geo.features){const gm=f.geometry;if(!gm)continue;const polys=gm.type==='Polygon'?[gm.coordinates]:gm.coordinates;
+  for(const poly of polys)for(const ring of poly){x.beginPath();let pen=false;for(const [lo,la] of ring){const [px,py,v]=proj(la,lo);if(v>0){pen?x.lineTo(px,py):x.moveTo(px,py);pen=true}else pen=false}x.stroke();}}
+ // stations
+ if(CFG.dots){const d=await (await fetch('/public/fm/stations.json')).json();x.fillStyle='rgba(26,111,214,.55)';
+  for(let i=0;i<d.pts.length;i+=2){const [px,py,v]=proj(d.pts[i]/10,d.pts[i+1]/10);if(v>.05){x.beginPath();x.arc(px,py,1.6,0,7);x.fill();}}
+  CFG.pins=d.list.filter(s=>['Antenne Halle','Radio Vitoria','Tranzistor','Voice of Grace Radio','TOP radio','Ellebore'].includes(s.n)).map(s=>[s.n,s.lat,s.lng]);}
+ // rim
+ x.strokeStyle='rgba(156,201,255,.9)';x.lineWidth=2;x.beginPath();x.arc(cx,cy,R,0,7);x.stroke();
+ // pins (with collision nudge)
+ const placed=[];for(const [n,la,lo] of CFG.pins){let [px,py,v]=proj(la,lo);if(v<.05)continue;
+  for(const q of placed)if(Math.abs(q[0]-px)<120&&Math.abs(q[1]-py)<34)py=q[1]+(py<q[1]?-36:36);placed.push([px,py]);
+  const e=document.createElement('div');e.className='pin';e.textContent=n;e.style.left=px+'px';e.style.top=py+'px';document.body.appendChild(e);}
+ document.body.dataset.ready=1;})();
+</script></body></html>
