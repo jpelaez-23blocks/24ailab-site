@@ -22,7 +22,7 @@
     build();
     var c=get();
     if(c==='accepted')loadAnalytics();else if(c!=='declined')el.hidden=false;
-    var s=document.getElementById('cookie-settings');if(s)s.onclick=window.openCookieSettings;
+    document.querySelectorAll('.cookie-settings,#cookie-settings').forEach(function(s){s.onclick=window.openCookieSettings});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
