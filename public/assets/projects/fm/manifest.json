@@ -1,0 +1,82 @@
+[
+  {
+    "file": "player-desktop.webp",
+    "fallback": "player-desktop.png",
+    "experience": "The player: Winamp-style deck with EQ, playlist and live visualizer",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "player-mobile.webp",
+    "fallback": "player-mobile.png",
+    "experience": "The player on a phone",
+    "viewport": "390x844",
+    "source": "https://fm.24ailab.com/",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "globe-desktop.webp",
+    "fallback": "globe-desktop.png",
+    "experience": "The 3D station globe",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/globe.html",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "globe-stations-desktop.webp",
+    "fallback": "globe-stations-desktop.png",
+    "experience": "Tap a pin to browse a country's stations",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/globe.html",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "globe-mobile.webp",
+    "fallback": "globe-mobile.png",
+    "experience": "The globe on a phone",
+    "viewport": "390x844",
+    "source": "https://fm.24ailab.com/globe.html",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "mini-desktop.webp",
+    "fallback": "mini-desktop.png",
+    "experience": "FM mini, the 2004 view",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/#mini",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "mini-mobile.webp",
+    "fallback": "mini-mobile.png",
+    "experience": "FM mini on a phone",
+    "viewport": "390x844",
+    "source": "https://fm.24ailab.com/#mini",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "letter-desktop.webp",
+    "fallback": "letter-desktop.png",
+    "experience": "The letter",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/letter.html",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "letter-mobile.webp",
+    "fallback": "letter-mobile.png",
+    "experience": "The letter on a phone",
+    "viewport": "390x844",
+    "source": "https://fm.24ailab.com/letter.html",
+    "captured": "2026-10-31"
+  },
+  {
+    "file": "credits-desktop.webp",
+    "fallback": "credits-desktop.png",
+    "experience": "Credits",
+    "viewport": "1440x900",
+    "source": "https://fm.24ailab.com/credits.html",
+    "captured": "2026-10-31"
+  }
+]
