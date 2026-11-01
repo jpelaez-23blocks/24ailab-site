@@ -17,7 +17,7 @@ The design system for 24ailab.com: every project gets **one card** on `/projects
 Rules: light mode only, no purple gradients, no surprise background/palette changes, no third-party logos or skin assets (draw an homage instead). Name is always "2xAI Lab".
 
 ## 2. Project card
-**Anatomy** (top → bottom): hint panel (320:140, inline SVG) · meta chips (era first, in accent, then tags) · name (h2) · one-line pitch · Why · How · CTAs · optional `Screenshots` disclosure (gallery + lightbox).
+**Anatomy** (top → bottom): hint panel (320:140, inline SVG) · meta chips (era first, in accent, then tags) · name (h2) · one-line pitch · Why · How · CTAs . No screenshots on the card: the story page is the details view.
 
 **CTAs.** Exactly two, both real `<a>` links:
 1. Primary `btn pri` → the project itself (`url`, label `cta`, e.g. "Open FM ↗").
@@ -48,7 +48,7 @@ The card itself is **not** a link, so it never swallows the two CTAs. Focus: 2px
 ## 5. Add a new project
 1. Append an entry to `public/project-cards/data.js` (copy FM's; set `id`, `accent`, `url`, `cta`; leave `story` out until the page exists; `hint: 'default'` is fine to start).
 2. Optional bespoke hint: add `LAB_HINTS.<id>` in `cards.js` (or a new script loaded after `data.js`) and `.hint-<id>` keyframes in `cards.css` following §3.
-3. Screenshots → `public/assets/projects/<id>/` (`.webp` + `.png`), list them in `gallery`.
+3. No screenshots on cards; tell the project's story on its story page instead. (`gallery` is still supported but deprecated.)
 4. Add a one-line `<noscript>` card in `projects.html` and the homepage line in `index.html` `#projects`.
 5. Story page: copy `public/fm/` to `public/<id>/`, replace scenes/captions/final line, set `story: '/<id>/'`.
 6. Test at 1440×900 and 390×844 (hover, keyboard focus, reduced motion), branch + PR; Juan approves merges.
