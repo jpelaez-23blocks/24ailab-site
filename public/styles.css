@@ -83,3 +83,9 @@ header.site .ttl{color:inherit;text-decoration:none;font-weight:700;text-align:l
  #legal.foot .finl a,#legal.foot .finl button.lnk{color:var(--muted2);font:inherit;font-weight:400;text-decoration:none}
  #legal.foot .finl a:hover,#legal.foot .finl button.lnk:hover{color:var(--accent)}
 }
+/* hero copy + buttons */
+.island .lede{margin:10px 0 0;color:var(--text)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{display:inline-flex;align-items:center;min-height:40px;padding:0 18px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid var(--border);background:#fff;color:var(--text)}
+.btn:hover{text-decoration:none;border-color:var(--accent);color:var(--accent)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}.btn.pri:hover{color:#fff;filter:brightness(1.08)}

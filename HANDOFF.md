@@ -5,8 +5,9 @@ The public home page of **2xAI Lab**: a short landing page that says who we are,
 
 ## Brand facts (follow exactly)
 - Write the name as **2xAI Lab**. "24AI Lab" appears only as the secondary/pronunciation line.
-- Tagline (hero): **Two people, for AI.**
-- Secondary line: "We build AI experiences and explore what can be achieved with AI."
+- Tagline (hero h1 + footer): **Where AI meets craft.**
+- Hero supporting line: "We treat intelligence as a material to be shaped with care: experiences built like objects, agents trained like apprentices." Buttons: "See the projects" (#projects, primary) and "Contact" (/contact).
+- Description (meta, og, twitter, JSON-LD): "2xAI Lab is where AI meets craft. We treat intelligence as a material to be shaped with care: experiences built like objects, agents trained like apprentices. The result is technology with taste."
 - Primary domain: **24ailab.com**. `www.24ailab.com` redirects to it.
 - **2xailab.com** should 301-redirect to 24ailab.com. This is NOT configured yet. It needs proxied (orange-cloud) DNS records on the 2xailab.com zone, e.g. `A @ 192.0.2.1` and `A www 192.0.2.1` (dummy IP, proxied), plus a Redirect Rule: `*2xailab.com/*` → `https://24ailab.com/${2}`, 301, preserve query string.
 - **Never mention 23blocks** anywhere: no copy, metadata or links.
@@ -67,7 +68,7 @@ HANDOFF.md          this file
   - **Every push to main auto-deploys** in about 30 to 60 seconds. Other branches get preview URLs.
 - Custom domains: `24ailab.com` (primary) and `www.24ailab.com` (redirects to the apex).
 - **Don't touch `fm.24ailab.com`.** It's a separate Pages project (repo `jpelaez-23blocks/wavamp`) plus a Worker `wavamp-proxy` with routes `/proxy*`, `/meta*` and `/api/*`, KV and a cron. Leave its DNS record alone too.
-- Verify: `curl -s https://24ailab.com/ | grep "Two people"`.
+- Verify: `curl -s https://24ailab.com/ | grep "Where AI meets craft"`.
 
 ## Git / GitHub auth (shared box)
 - Local clone: `/workspace/24ailab-site`.
