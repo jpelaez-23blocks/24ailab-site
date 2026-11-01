@@ -37,3 +37,4 @@
  #legal.foot .finl a,#legal.foot .finl button.lnk{color:var(--muted2);font:inherit;font-weight:400;text-decoration:none}
  #legal.foot .finl a:hover,#legal.foot .finl button.lnk:hover{color:var(--accent)}
 }
+.foot .fname .flogo{display:block;height:32px;width:auto}

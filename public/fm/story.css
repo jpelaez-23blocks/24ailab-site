@@ -163,3 +163,4 @@ body.dark .cap h2,body.dark .mark{color:#fff}body.dark .cap .sub{color:#d9f0ee}b
 #fin.on{pointer-events:auto}
 .nos{max-width:640px;margin:20vh auto;padding:0 20px;position:relative;z-index:5}
 html.rm *{animation:none!important}
+.mark .logo{display:block;height:32px;width:auto}.mark .logo.sm{display:none}@media (max-width:640px){.mark .logo.lg{display:none}.mark .logo.sm{display:block;height:26px}}

@@ -110,3 +110,4 @@ main.doc .pcard h2{font-size:20px;margin:0 0 8px}.pcard p{margin:8px 0 0}
 .lb p{color:#eee;font-size:14px;margin:0;text-align:center}
 .lb button{position:absolute;top:14px;right:16px;font:inherit;font-size:28px;line-height:1;color:#fff;background:none;border:0;cursor:pointer;padding:6px 10px}
 .pcards{grid-template-columns:minmax(0,1fr)}.pcard{min-width:0}
+.foot .fname .flogo{display:block;height:32px;width:auto}
