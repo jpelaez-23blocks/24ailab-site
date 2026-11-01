@@ -4,7 +4,7 @@ window.LAB_PROJECTS = [
   {
     id: 'fm',
     name: 'FM',
-    pitch: 'World radio, from 1998 to 2026.',
+    pitch: 'World radio, from 1979 to 2026.',
     era: '1979 → 2026',
     tags: ['Radio', 'Web Audio', '3D globe'],
     accent: '#1a6fd6',
