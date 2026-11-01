@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>FM: a short history of listening · 2xAI Lab</title>
+<meta name="description" content="From a shortwave dial to 60,000 live stations on one globe. The story behind FM, a project from 2xAI Lab.">
+<link rel="canonical" href="https://24ailab.com/fm/">
+<meta property="og:title" content="FM: a short history of listening">
+<meta property="og:description" content="From a shortwave dial to 60,000 live stations on one globe.">
+<meta property="og:image" content="https://24ailab.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/fm/story.css">
+<link rel="preload" href="/fm/stations.json" as="fetch" crossorigin>
+</head>
+<body>
+<a class="mark" href="/">2xAI Lab</a>
+<button id="snd" class="snd" type="button" aria-pressed="false"><span class="ico" aria-hidden="true"></span><span class="lbl">Sound off</span></button>
+
+<div id="stage">
+  <div id="desk" aria-hidden="true">
+    <div class="icons"><i class="ic pc">My Computer</i><i class="ic fold">Stations</i><i class="ic bin">Recycle</i></div>
+    <div class="bar"><b class="start">Start</b><span class="task">FM · Shortwave Night</span><span class="clock">9:58 PM</span></div>
+  </div>
+
+  <div id="box" aria-hidden="true"><div id="w">
+    <!-- 1. shortwave radio -->
+    <div id="radio">
+      <div class="ant"><i></i></div>
+      <div class="handle"></div>
+      <div class="body">
+        <div class="grille"></div>
+        <div class="dial"><svg viewBox="0 0 262 112" id="scale"></svg><i id="needle"></i><span class="glow"></span></div>
+        <div class="plate">World band receiver <em>12 band · PLL synthesized</em></div>
+        <div class="meter"><span id="freq">5.900</span><small>MHz</small><div class="sig"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="led" id="led"></div>
+        <div class="bands"><i>MW</i><i>SW1</i><i class="on">SW2</i><i>FM</i></div>
+        <div class="knob vol"></div>
+        <div class="knob tune" id="tune"></div>
+      </div>
+    </div>
+
+    <!-- 3/4. pocket player -->
+    <div id="ipod">
+      <div class="part shell"></div>
+      <div class="part batt"><span>Li-ion 3.7V</span></div>
+      <div class="part pcb"><i></i><i></i><i></i></div>
+      <div class="part scr"><div class="sb"><span id="sbt">Now Playing</span><i></i></div>
+        <div class="np" id="np"><b id="npn">Shortwave Night</b><span id="npc">9.58 MHz · 31 m</span><div class="pb"><i id="pbi"></i></div></div>
+        <ul id="menu"></ul></div>
+      <div class="part wheel"><span class="m">MENU</span><span class="l">&#9198;</span><span class="r">&#9197;</span><span class="b">&#9654;&#10074;&#10074;</span><i id="thumb"></i></div>
+      <div class="part ctr" id="ctr"></div>
+    </div>
+    <!-- 2. desktop player (grille dots live inside #wa so they ride every transform) -->
+    <div id="wa">
+      <div class="win">
+        <div class="tb"><span>FM · player</span><i></i><i></i><i></i></div>
+        <div class="lcd"></div>
+        <div class="info"><div class="mq"><span id="mq">*** SHORTWAVE NIGHT · 9.58 MHz · 31 METRE BAND *** </span></div>
+          <div class="kb"><b>128</b> kbps <b>44</b> kHz <em>stereo</em></div><div class="time" id="tm">01:24</div></div>
+        <div class="seek"><i id="seek"></i></div>
+        <div class="tp"><i>&#9198;</i><i>&#9654;</i><i>&#10074;&#10074;</i><i>&#9632;</i><i>&#9197;</i><span class="vol"><i></i></span></div>
+        <div class="eq"><span class="eqt">EQ</span></div>
+      </div>
+      <div id="dots"></div>
+    </div>
+
+    <div id="ring"></div>
+  </div></div>
+
+  <canvas id="globe" aria-hidden="true"></canvas>
+  <div id="pins" aria-hidden="true"></div>
+
+  <div id="ugly" aria-hidden="true"><table><caption>FM Radio Links!!! <blink>NEW</blink></caption>
+    <thead><tr><th>Station</th><th>Country</th><th>Stream</th></tr></thead><tbody id="rows"></tbody></table>
+    <p class="hit">You are visitor #<b>004127</b> &middot; Best viewed in 800x600</p></div>
+
+  <div class="caps">
+    <section class="cap" data-a="0" data-b=".15"><p class="era">1979 · Shortwave</p><h2>Turn the dial.<br>Somewhere, someone is playing a song.</h2><p class="sub">Static, a whistle, then a voice from another continent.</p>
+      <button class="try" type="button" id="try">Turn on the sound</button></section>
+    <section class="cap" data-a=".19" data-b=".33"><p class="era">1998 · The desktop</p><h2>Then the radio moved into the computer.</h2><p class="sub">A few green pixels, a stack of bars that danced, every station one click away.</p></section>
+    <section class="cap" data-a=".37" data-b=".49"><p class="era">2005 · The pocket</p><h2>Then it got small enough to carry.</h2><p class="sub">Every part had a place, and it all closed into one quiet object.</p></section>
+    <section class="cap" data-a=".52" data-b=".67"><p class="era">The wheel</p><h2>A circle you could feel.</h2><p class="sub">Turn to scroll. Press to play.</p></section>
+    <section class="cap" data-a=".71" data-b=".89"><p class="era">2026 · The planet</p><h2>Now the whole planet is on the dial.</h2><p class="sub"><b id="nst">62,118</b> live stations. Not a list anymore: a place.</p></section>
+  </div>
+  <div class="fin" id="fin">
+    <h1>We went from <q>I want to listen to a radio station</q> to building a time machine and a&nbsp;learning&nbsp;tool.</h1>
+    <a class="cta" href="https://fm.24ailab.com">Open FM <span aria-hidden="true">&rarr;</span></a>
+    <p class="foot">&copy; 2026 2xAI Lab &middot; <a href="mailto:hello@24ailab.com">hello@24ailab.com</a></p>
+  </div>
+  <div class="hint" id="hint" aria-hidden="true">Scroll to tune</div>
+</div>
+
+<main id="track">
+  <noscript><div class="nos"><h1>FM: a short history of listening</h1><p>From a shortwave dial to a desktop player, a pocket player with a wheel, and finally 60,000 live stations on one globe.</p><p><a href="https://fm.24ailab.com">Open FM</a></p></div></noscript>
+  <div class="sr-only">
+    <p>FM: a short history of listening.</p>
+    <p>1979: a shortwave radio, tuned by hand through static. 1998: radio moves into the computer, a desktop player with a dancing visualizer. 2005: a pocket player with a click wheel. 2026: more than 60,000 live stations on one globe. We went from "I want to listen to a radio station" to building a time machine and a learning tool.</p>
+  </div>
+</main>
+<script src="/fm/story.js" defer></script>
+</body>
+</html>
