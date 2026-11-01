@@ -92,5 +92,5 @@ HANDOFF.md          this file
 - [ ] Add `sameAs` to the JSON-LD once 2xAI Lab social or company links exist.
 - [x] Add apple-touch-icon / PNG favicons (done: PNG 16/32, apple-touch-icon 180, icon-192/512, site.webmanifest).
 - [ ] Consider self-hosting globe.gl or a smaller countries file if performance matters.
-- [ ] Projects section: add new projects as they launch (FM is the only one).
+- [ ] Projects section: add new projects as they launch (FM is the only one). Cards are data-driven: see DESIGN.md §5.
 - [ ] Optional: privacy/terms pages if analytics or forms are added (FM has examples).

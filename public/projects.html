@@ -19,6 +19,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/project-cards/cards.css">
 <meta name="theme-color" content="#ffffff">
 <meta property="og:image" content="https://24ailab.com/og-image.png">
 <meta name="twitter:image" content="https://24ailab.com/og-image.png">
@@ -28,32 +29,8 @@
 <main class="doc">
 <h1>Projects</h1>
 <p class="eff">What we build, why, and how.</p>
-<div class="pcards">
-<!-- Project card template: copy this block for a new project.
-<article class="pcard">
-  <h2>Project name</h2>
-  <p><strong>Why.</strong> One or two sentences.</p>
-  <p><strong>How.</strong> One or two sentences.</p>
-  <p><a href="https://example.24ailab.com">Visit Project name →</a></p>
-</article>
--->
-<article class="pcard">
-  <h2>FM</h2>
-  <p><strong>Why.</strong> One place to tune in to radio from any country: to practice a language by listening to real people talk and sing, and to feel a little closer to home.</p>
-  <p><strong>How.</strong> A free, Winamp-style web player with 60,000+ live stations from the Radio Browser directory, a 10-band equalizer, a live visualizer and a 3D station globe, built together with an AI agent.</p>
-  <div class="gallery" aria-label="FM screenshots">
-    <figure class="shot mobile"><a href="/assets/projects/fm/player-mobile.webp" data-lb>
-      <picture><source srcset="/assets/projects/fm/player-mobile.webp" type="image/webp"><img src="/assets/projects/fm/player-mobile.png" width="780" height="1696" loading="lazy" decoding="async" alt="FM screenshot: the player on a phone"></picture></a>
-      <figcaption>The player on a phone</figcaption></figure>
-    <figure class="shot mobile"><a href="/assets/projects/fm/globe-mobile.webp" data-lb>
-      <picture><source srcset="/assets/projects/fm/globe-mobile.webp" type="image/webp"><img src="/assets/projects/fm/globe-mobile.png" width="780" height="1696" loading="lazy" decoding="async" alt="FM screenshot: the globe on a phone"></picture></a>
-      <figcaption>The globe on a phone</figcaption></figure>
-    <figure class="shot mobile"><a href="/assets/projects/fm/mini-mobile.webp" data-lb>
-      <picture><source srcset="/assets/projects/fm/mini-mobile.webp" type="image/webp"><img src="/assets/projects/fm/mini-mobile.png" width="780" height="1696" loading="lazy" decoding="async" alt="FM screenshot: fM mini on a phone"></picture></a>
-      <figcaption>FM mini on a phone</figcaption></figure>
-  </div>
-  <p><a href="https://fm.24ailab.com">Visit FM →</a></p>
-</article>
+<div class="pcards" data-pcards>
+<noscript><article class="pcard"><h2>FM</h2><p>World radio, from 1998 to 2026.</p><p><a href="https://fm.24ailab.com">Open FM →</a> · <a href="/fm/">Project story</a></p></article></noscript>
 </div>
 </main>
 <footer id="legal" class="foot"><div class="fin">
@@ -66,6 +43,8 @@
 </div></footer>
 <script src="/consent.js?v=2" defer></script>
 <script src="/nav.js" defer></script>
+<script src="/project-cards/data.js" defer></script>
+<script src="/project-cards/cards.js" defer></script>
 <script src="/lightbox.js" defer></script>
 </body>
 </html>
