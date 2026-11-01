@@ -1,0 +1,58 @@
+/* Project cards: see /DESIGN.md. Uses site tokens from /styles.css; --pc = project accent. */
+.pc{padding:0;overflow:hidden;--pc:var(--accent);--loop:3.6s;--ease:cubic-bezier(.65,0,.35,1)}
+.pc-hint{position:relative;aspect-ratio:320/140;background:linear-gradient(180deg,#f5f9fe,#e8f2fc);border-bottom:1px solid var(--border)}
+.pc-hint svg{position:absolute;inset:0;width:100%;height:100%}
+.pc-body{padding:20px 26px 22px}
+.pc-meta{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin:0 0 10px;padding:0}
+.pc-meta li{font-size:11.5px;line-height:1;padding:5px 9px;border-radius:999px;background:var(--chip);color:var(--muted)}
+.pc-meta li:first-child{background:var(--hl);color:var(--pc);font-weight:600;font-variant-numeric:tabular-nums}
+main.doc .pc h2{font-size:22px;margin:0}
+.pc .pc-pitch{margin:2px 0 6px;font-size:16px;color:var(--text)}
+.pc-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.pc .btn.pri{background:var(--pc);border-color:var(--pc)}
+.pc .btn:focus-visible{outline:2px solid var(--pc);outline-offset:3px}
+.pc .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.pc-more{margin-top:14px}.pc-more summary{cursor:pointer;color:var(--muted);font-weight:600;font-size:13px;width:max-content}
+.pc-more summary:focus-visible{outline:2px solid var(--pc);outline-offset:2px;border-radius:4px}
+.pc .gallery{margin:10px -26px 0}
+@media (max-width:520px){.pc-body{padding:18px 18px 20px}.pc .gallery{margin:10px -18px 0;padding:4px 18px 10px}}
+
+/* ---- hint animations: paused by default, run when .live (in view) or on hover/focus ---- */
+.pc-hint *{animation-play-state:paused!important}
+.pc.live .pc-hint *,.pc:hover .pc-hint *,.pc:focus-within .pc-hint *{animation-play-state:running!important}
+
+/* default hint: soft sonar from the accent */
+.h-def .core{fill:var(--pc)}
+.h-def .wave{fill:none;stroke:var(--pc);stroke-width:1.5;transform-box:fill-box;transform-origin:center;opacity:0;animation:pc-wave var(--loop) var(--ease) infinite}
+.h-def .w2{animation-delay:calc(var(--loop) / -3)}.h-def .w3{animation-delay:calc(var(--loop) / -1.5)}
+@keyframes pc-wave{0%{transform:scale(1);opacity:.55}100%{transform:scale(5);opacity:0}}
+
+/* FM hint: dial + static (0–33%) → visualizer (33–66%) → globe + pins (66–100%) */
+.hint-fm .a1,.hint-fm .a2,.hint-fm .a3{animation:var(--loop) var(--ease) infinite}
+.hint-fm .a1{animation-name:fm-a1}.hint-fm .a2{animation-name:fm-a2}.hint-fm .a3{animation-name:fm-a3}
+@keyframes fm-a1{0%,28%{opacity:1}36%,92%{opacity:0}100%{opacity:1}}
+@keyframes fm-a2{0%,28%{opacity:0}36%,60%{opacity:1}68%,100%{opacity:0}}
+@keyframes fm-a3{0%,60%{opacity:0}68%,92%{opacity:1}100%{opacity:0}}
+.hint-fm .dial{fill:#1d2a3a}
+.hint-fm .tick{stroke:#e9c46a;stroke-width:1.2}
+.hint-fm .needle{stroke:#ff6b4a;stroke-width:2.2;stroke-linecap:round;animation:fm-sweep var(--loop) var(--ease) infinite}
+@keyframes fm-sweep{0%{transform:translateX(86px)}26%{transform:translateX(212px)}30%,100%{transform:translateX(196px)}}
+.hint-fm .sn{fill:#9fb4cc;animation:fm-flick .24s steps(2) infinite}.hint-fm .s1{animation-delay:-.08s}.hint-fm .s2{animation-delay:-.16s}
+@keyframes fm-flick{0%{opacity:.9}100%{opacity:.1}}
+.hint-fm .static{animation:fm-lock var(--loop) linear infinite}
+@keyframes fm-lock{0%,22%{opacity:1}30%,100%{opacity:0}}
+.hint-fm .bar{fill:var(--pc);transform-box:fill-box;transform-origin:bottom;animation:fm-bar .6s ease-in-out infinite alternate}
+.hint-fm .b1{fill:#3d8be6}.hint-fm .b2{fill:#6fa9ee}.hint-fm .b3{fill:#2a7ad9}
+@keyframes fm-bar{0%{transform:scaleY(.18)}100%{transform:scaleY(1)}}
+.hint-fm .globe{fill:#e8f2fc;stroke:#9cc9ff;stroke-width:3}
+.hint-fm .mer{fill:none;stroke:#a9bdd3;stroke-width:1}
+.hint-fm .pin{fill:var(--pc);stroke:#fff;stroke-width:1.6;transform-box:fill-box;transform-origin:center;animation:fm-pin var(--loop) cubic-bezier(.34,1.56,.64,1) infinite}
+.hint-fm .p2{animation-delay:.12s}.hint-fm .p3{animation-delay:.24s}
+@keyframes fm-pin{0%,66%{transform:scale(0)}74%,100%{transform:scale(1)}}
+
+/* reduced motion: no animation, show the final frame (globe + pins) */
+@media (prefers-reduced-motion:reduce){
+ .pc-hint *{animation:none!important}
+ .hint-fm .a1,.hint-fm .a2{opacity:0}.hint-fm .a3{opacity:1}
+ .h-def .wave{opacity:.3;transform:scale(2.4)}
+}
