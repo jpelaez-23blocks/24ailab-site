@@ -151,7 +151,7 @@
 
   /* ---------- scroll ---------- */
   var KEYS = [.13, .30, .50, .62, .78, .905, .975];
-  function target() { var max = document.documentElement.scrollHeight - vh; var r = max > 0 ? cl(scrollY / max) : 0;
+  function target() { var tr = document.getElementById('track'), max = (tr ? tr.offsetTop + tr.offsetHeight : document.documentElement.scrollHeight) - vh; var r = max > 0 ? cl(scrollY / max) : 0;
     return RM ? KEYS[Math.min(KEYS.length - 1, Math.floor(r * KEYS.length))] : r; }
   var P = target(), last = -1, t0 = performance.now(), prevT = t0;
 
