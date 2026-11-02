@@ -112,8 +112,10 @@ function seg(x,y,w,h,t,on){var H=h/2,o='';function r(id,X,Y,W,Hh){o+='<rect clas
  r('a',x+t*.6,y,w-t*1.2,t);r('g',x+t*.6,y+H-t/2,w-t*1.2,t);r('d',x+t*.6,y+h-t,w-t*1.2,t);
  r('f',x,y+t*.6,t,H-t*1.1);r('b',x+w-t,y+t*.6,t,H-t*1.1);r('e',x,y+H+t*.5,t,H-t*1.1);r('c',x+w-t,y+H+t*.5,t,H-t*1.1);return o;}
 function digi(p){var s='<defs>'+
- '<linearGradient id="'+p+'rs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3e44"/><stop offset=".5" stop-color="#1d2024"/><stop offset="1" stop-color="#101215"/></linearGradient>'+
- '<linearGradient id="'+p+'pl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef0f2"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#d6dade"/><stop offset="1" stop-color="#9fa6ae"/></linearGradient>'+
+ '<linearGradient id="'+p+'rs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".18" stop-color="#c9ced4"/><stop offset=".42" stop-color="#eef1f4"/><stop offset=".6" stop-color="#a7aeb6"/><stop offset=".85" stop-color="#d3d8dd"/><stop offset="1" stop-color="#7f8790"/></linearGradient>'+
+ '<linearGradient id="'+p+'br" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a929a"/><stop offset=".08" stop-color="#e9ecef"/><stop offset=".5" stop-color="#c4cad0"/><stop offset=".92" stop-color="#eef1f3"/><stop offset="1" stop-color="#878f97"/></linearGradient>'+
+ '<pattern id="'+p+'bs" width="200" height="1.6" patternUnits="userSpaceOnUse"><rect width="200" height=".5" fill="#fff" fill-opacity=".22"/></pattern>'+
+ '<linearGradient id="'+p+'pl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a4048"/><stop offset=".5" stop-color="#22272d"/><stop offset="1" stop-color="#15191d"/></linearGradient>'+
  '<linearGradient id="'+p+'lc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4ccb2"/><stop offset="1" stop-color="#a9b495"/></linearGradient>'+
  '<linearGradient id="'+p+'gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>'+
  '<filter id="'+p+'ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity=".35"/></filter></defs>';
@@ -122,24 +124,24 @@ function digi(p){var s='<defs>'+
  for(var i=0;i<5;i++)s+='<rect x="64" y="'+(14+i*12)+'" width="72" height="1.4" fill="#2c3036"/><rect x="64" y="'+(212+i*12)+'" width="72" height="1.4" fill="#2c3036"/>';
  s+='</g>';
  /* buttons: two left, one right */
- [[100],[172]].forEach(function(y){s+='<rect x="11" y="'+y[0]+'" width="12" height="9" rx="2" fill="#2a2e33"/><rect x="11" y="'+(y[0]+1)+'" width="5" height="7" rx="1.5" fill="#4a5058"/>';});
- s+='<rect x="177" y="136" width="12" height="9" rx="2" fill="#2a2e33"/><rect x="184" y="137" width="5" height="7" rx="1.5" fill="#4a5058"/>';
+ [[100],[172]].forEach(function(y){s+='<rect x="11" y="'+y[0]+'" width="12" height="9" rx="2" fill="#8d959d"/><rect x="11" y="'+(y[0]+1)+'" width="5" height="7" rx="1.5" fill="#e2e6ea"/>';});
+ s+='<rect x="177" y="136" width="12" height="9" rx="2" fill="#8d959d"/><rect x="184" y="137" width="5" height="7" rx="1.5" fill="#e2e6ea"/>';
  /* case */
- s+='<path d="M30 78 Q30 70 40 68 L160 68 Q170 70 170 78 L176 108 Q178 140 176 172 L170 202 Q170 210 160 212 L40 212 Q30 210 30 202 L24 172 Q22 140 24 108Z" fill="url(#'+p+'rs)"/>';
- s+='<path d="M34 80 Q34 74 42 73 L158 73 Q166 74 166 80" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="1.2"/>';
+ s+='<path d="M30 78 Q30 70 40 68 L160 68 Q170 70 170 78 L176 108 Q178 140 176 172 L170 202 Q170 210 160 212 L40 212 Q30 210 30 202 L24 172 Q22 140 24 108Z" fill="url(#'+p+'rs)" filter="url(#'+p+'ds)" stroke="#6f7780" stroke-width=".8"/><path d="M38 76 L162 76 Q166 78 167 84 L171 110 Q173 140 171 170 L167 196 Q166 202 162 204 L38 204 Q34 202 33 196 L29 170 Q27 140 29 110 L33 84 Q34 78 38 76Z" fill="url(#'+p+'br)"/><path d="M38 76 L162 76 Q166 78 167 84 L171 110 Q173 140 171 170 L167 196 Q166 202 162 204 L38 204 Q34 202 33 196 L29 170 Q27 140 29 110 L33 84 Q34 78 38 76Z" fill="url(#'+p+'bs)"/>';
+ s+='<path d="M34 80 Q34 74 42 73 L158 73 Q166 74 166 80" fill="none" stroke="#fff" stroke-opacity=".9" stroke-width="1.4"/>';
  /* face plate */
- s+='<rect x="36" y="84" width="128" height="112" rx="10" fill="url(#'+p+'pl)"/><rect x="36.5" y="84.5" width="127" height="111" rx="9.5" fill="none" stroke="#7d848c" stroke-opacity=".6"/>';
+ s+='<rect x="36" y="84" width="128" height="112" rx="10" fill="url(#'+p+'pl)"/><rect x="36.5" y="84.5" width="127" height="111" rx="9.5" fill="none" stroke="#5b636c" stroke-opacity=".9"/>';
  /* top band labels */
- s+='<text x="44" y="95.5" font-family="IBM Plex Mono,monospace" font-size="6.2" font-weight="600" letter-spacing=".6" fill="#2b3036">LIGHT</text>';
- s+='<text x="156" y="95.5" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="5" letter-spacing=".5" fill="#2b3036">ALARM CHRONOGRAPH</text>';
+ s+='<text x="44" y="95.5" font-family="IBM Plex Mono,monospace" font-size="6.2" font-weight="600" letter-spacing=".6" fill="#e6e9ec">LIGHT</text>';
+ s+='<text x="156" y="95.5" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="5" letter-spacing=".5" fill="#b9c0c7">ALARM CHRONOGRAPH</text>';
  s+='<rect x="44" y="98.5" width="112" height="1.6" fill="#1a6fd6"/>';
  /* LCD */
- s+='<rect x="44" y="104" width="112" height="70" rx="5" fill="#2b3036"/><rect x="48" y="108" width="104" height="62" rx="3" fill="url(#'+p+'lc)"/>';
+ s+='<rect x="43" y="103" width="114" height="72" rx="5.5" fill="#c9ced4"/><rect x="44.5" y="104.5" width="111" height="69" rx="4.5" fill="#1a1e22"/><rect x="48" y="108" width="104" height="62" rx="3" fill="url(#'+p+'lc)"/>';
  s+='<g fill="#262d20"><text class="dy" x="54" y="120" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" letter-spacing=".8">MO</text><text class="dd" x="146" y="120" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600">2</text><text class="ap" x="54" y="133" font-family="IBM Plex Mono,monospace" font-size="6" font-weight="600">PM</text></g>';
  s+='<g class="ghost" fill="#262d20" fill-opacity=".07">'+[56,74,96,114].map(function(x){return seg(x,126,14,30,3.2);}).join('')+seg(133,140,8,16,2.2)+seg(142.5,140,8,16,2.2)+'</g>';
  s+='<g class="lit" fill="#1f261a"></g><g class="col" fill="#1f261a"><rect x="91" y="133" width="3" height="3" rx="1"/><rect x="91" y="146" width="3" height="3" rx="1"/></g>';
  /* bottom label */
- s+='<text x="100" y="187" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="5.4" letter-spacing="1.4" fill="#2b3036">WATER RESIST</text>';
+ s+='<text x="100" y="187" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="5.4" letter-spacing="1.4" fill="#b9c0c7">WATER RESIST</text>';
  /* glass glare */
  s+='<path d="M48 108 L100 108 L70 170 L48 170Z" fill="url(#'+p+'gl)" opacity=".5"/>';
  return s;}
