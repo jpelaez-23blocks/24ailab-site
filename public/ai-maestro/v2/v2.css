@@ -1,0 +1,45 @@
+/* AI Maestro v2: full-screen scenes (title + visual), scrubbed by scroll like FM's "Turn the dial". */
+.v2 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.v2 .track{position:relative;width:100%}
+.v2 .scene{display:grid;grid-template-columns:minmax(0,38fr) minmax(0,62fr);gap:4vw;align-items:center;max-width:1280px;margin:0 auto;padding:7vh 5vw;box-sizing:border-box;min-height:80svh}
+.v2 .txt{max-width:30rem}
+.v2 .era{font:600 12px/1 var(--font);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+.v2 .scene h1,.v2 .scene h2{font:300 clamp(30px,3.9vw,58px)/1.1 Outfit,var(--font);letter-spacing:-.02em;margin:0;color:var(--text);text-wrap:balance}
+.v2 .credit{margin:18px 0 0;color:var(--muted);font-size:15px;letter-spacing:.02em}
+.v2 .vis{position:relative;display:flex;justify-content:center;align-items:center;min-width:0}
+.v2 .vis .screen{width:100%;max-width:none;aspect-ratio:16/10}
+.v2 .ph,.v2 .end p{display:none}
+.v2 .hint,.v2 .prog{display:none}
+.v2 .after{padding-top:8px}
+/* animated visuals inside a live scene */
+.v2 .b1 .t1 .tl{animation:type 2.4s steps(14) infinite}
+@keyframes type{0%{width:0}60%,100%{width:70%}}
+.v2 .b1 .t1 .tl.s{animation-delay:.8s}
+.v2 .b2 .term{animation:jit 2.2s ease-in-out infinite alternate}
+.v2 .b2 .t2{animation-delay:-.4s}.v2 .b2 .t3{animation-delay:-1s}.v2 .b2 .t4{animation-delay:-1.5s}.v2 .b2 .t5{animation-delay:-.7s}.v2 .b2 .t6{animation-delay:-1.9s}.v2 .b2 .t7{animation-delay:-1.2s}
+@keyframes jit{0%{translate:0 0;rotate:0deg}50%{translate:6px -5px;rotate:-1.6deg}100%{translate:-5px 4px;rotate:1.4deg}}
+.v2 .b4 .tile{animation:pulse 3s ease-in-out infinite}.v2 .b4 .g2{animation-delay:.4s}.v2 .b4 .g3{animation-delay:.8s}.v2 .b4 .g4{animation-delay:1.2s}.v2 .b4 .g5{animation-delay:1.6s}.v2 .b4 .g6{animation-delay:2s}.v2 .b4 .g7{animation-delay:2.4s}
+@keyframes pulse{50%{border-color:var(--accent);box-shadow:0 0 0 3px var(--hl)}}
+.v2 .b9 .endlogo{width:clamp(110px,16vw,200px)}
+
+/* ---- animated mode: one pinned stage, scenes cross-fade/slide with scroll ---- */
+.v2a .v2 .track{height:calc(var(--n,12) * 100svh)}
+.v2a .v2 .pin{position:-webkit-sticky;position:sticky;top:var(--hh,64px);height:calc(100svh - var(--hh,64px));overflow:hidden}
+.v2a .v2 .scene{position:absolute;inset:0;min-height:0;height:100%;opacity:0;visibility:hidden;will-change:opacity,transform}
+.v2a .v2 .scene .txt,.v2a .v2 .scene .vis{will-change:transform}
+.v2a .v2 .vis .screen{width:min(100%,calc((100svh - var(--hh,64px) - 14vh)*1.6))}
+.v2a .v2 .hint{display:block;position:absolute;left:50%;bottom:max(14px,env(safe-area-inset-bottom));transform:translateX(-50%);font:600 11px/1 var(--font);letter-spacing:.16em;text-transform:uppercase;color:var(--muted2);transition:opacity .4s}
+.v2a .v2 .prog{display:block;position:absolute;left:0;right:0;top:0;height:2px;background:transparent}
+.v2a .v2 .prog i{display:block;height:100%;width:0;background:var(--accent);opacity:.55}
+
+/* portrait (iPhone): title on top, visual below */
+@media (max-aspect-ratio:1/1){
+ .v2 .scene{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:22px;padding:28px 18px 40px;align-items:start}
+ .v2 .scene h1,.v2 .scene h2{font-size:clamp(26px,7.4vw,38px)}
+ .v2 .era{margin-bottom:10px}
+ .v2 .vis .screen{aspect-ratio:3/4;max-height:62svh}
+ .v2a .v2 .scene{padding:max(26px,4svh) 18px max(44px,calc(env(safe-area-inset-bottom) + 34px))}
+ .v2a .v2 .vis{align-items:flex-start;height:100%;min-height:0}
+ .v2a .v2 .vis .screen{width:100%;height:100%;max-height:none;aspect-ratio:auto}
+}
+@media (prefers-reduced-motion:reduce){.v2 .screen *,.v2 .screen>div{animation:none!important;transition:none!important}}
