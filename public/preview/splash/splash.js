@@ -29,9 +29,10 @@ function part(p,f){var T=len(p)*f,o=[p[0]];for(var i=1;i<p.length;i++){var s=Mat
 function poly(p){ctx.beginPath();ctx.moveTo(p[0][0],p[0][1]);for(var i=1;i<p.length;i++)ctx.lineTo(p[i][0],p[i][1]);ctx.stroke();}
 var ease=function(x){x=Math.max(0,Math.min(1,x));return x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;}, cl=function(x){return Math.max(0,Math.min(1,x));};
 // timeline (s)
-var T=RM?{osc:0,glob:0,col:0,draw:0,drawEnd:1.0,glide:1.2,end:1.8}:{osc:0,glob:1.2,col:3.0,draw:3.25,drawEnd:4.3,glide:4.45,end:5.2};
+var T=RM?{osc:0,glob:0,col:0,draw:0,drawEnd:1.0,glide:1.15,land:1.55,end:2.0}:{osc:0,glob:1.2,col:3.0,draw:3.25,drawEnd:4.3,glide:4.4,land:4.95,end:5.4};
 var GRID=[];
 // globe
+var LAND=(function(b){var s=atob(b),o=[],k=0;for(var la=88;la>-90;la-=2)for(var lo=-180;lo<180;lo+=2,k++)if((s.charCodeAt(k>>3)>>(7-(k&7))&1)&&la<82&&((lo+180)/2)%Math.max(1,Math.round(1/Math.cos((la-1)*Math.PI/180)))==0)o.push([la-1,lo+1]);return o;})("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf8Af/gAAAAAAAAAAAAAAAAAAAAAAA3/3///+AAAABgAADgAAAAAAAAAAACdf8f///wAB+AAAAAAcAAAAAAAAAABwB34////4AAIAAAEAAOAAAAAAAAAAAGDvwAf//wAAAAADAAf/wAHIAAAAAAH4m38AP//gAAAAAMDT///8AAAAgDwAAfw3/AD/+gAAA4AGHf//////gBAf///3IdnwD/+AAAP/gA7f////////0P//////h+H/gAAAf/6//f////////Mf/////9n4D8A+AB++v///////////AP/////4g0B4AAAH5/////////////Af/////gHgAwAAAP5///////////HwAHgH///gH0AAAAAH4/////////+AIAADAB///4D+AAAAGCz/////////4A8AAIAAf///v/gAAAOCD/////////wA4AAAAAf///n/wAAAfP///////////AgAAAAAP/////QAAADf//////////9AAAAAAAH////8YAAAB///////////8AAAAAAAD////9AAAAB////v//////5AAAAAAAD////+AAAAB/f5+P//////wAAAAAAAD////gAAAAfznwPP//////jAAAAAAAD////AAAAAfCb//n/////+CAAAAAAAD///+AAAAAfAKf/H////+sCAAAAAAAB///8AAAAAWXQP/n/////mMAAAAAAAA///8AAAAAH+AC///////E8AAAAAAAAf//wAAAAAf/gB///////BgAAAAAAAAP//gAAAAAf/7////////gAAAAAAAAAD/AQAAAAA/////f/////gAAAAAAAAAF+AYAAAAB///+/n/////AAAAAAAAAAC+AAAAAAD/////0H///+gAAAAAAAAAAeAwAAAAD////f/B///8gAAAAAAAAAAeGEAAAAH////P+B/z+AAAAAAAAAAAAPMAwAAAD////v+A/B+gAAAAAAAAAAAD8AAAAAD////n4AeB/AgAAAAAAAAAAAPAAAAAH////3gAcAfAgAAAAAAAAAAADAAAAAH////6AAcAfggAAAAAAAAAAABDxAAAD////9wAMATAYAAAAAAAAAAAA7/AAAB/////gAKASAIAAAAAAAAAAAAH/gAAA/////gACAICIAAAAAAAAAAAAH/8AAAaH///AAAAsGAAAAAAAAAAAAAH/+AAAAB//+AAAAUOAAAAAAAAAAAAAP/+AAAAB//8AAAAY+wAAAAAAAAAAAAf//gAAAD//4AAAAMehgAAAAAAAAAAAP//8AAAB//wAAAAGdmuAAAAAAAAAAAf///AAAA//gAAAACAQPkAAAAAAAAAAP///gAAA//wAAAABwAHwgAAAAAAAAAH///AAAA//wAAAAACICYIAAAAAAAAAH//+AAAAf/wAAAAAAAAAAAAAAAAAAAD//+AAAA//wgAAAAABxAAAAAAAAAAAD//+AAAA//xgAAAAAPxgBAAAAAAAAAA//8AAAA//jgAAAAAf/gAAAAAAAAAAAf/8AAAA//DgAAAAAf/gAAAAAAAAAAAf/8AAAAf+DAAAAAD//4CAAAAAAAAAAf/wAAAAf/DAAAAAH//4AAAAAAAAAAAf/AAAAAf+CAAAAAH//8AAAAAAAAAAA//AAAAAf8AAAAAAH//+AAAAAAAAAAA/+AAAAAP8AAAAAAH//+AAAAAAAAAAA/+AAAAAH4AAAAAAD//+AAAAAAAAAAA/8AAAAAHwAAAAAADwf8AAAAAAAAAAA/gAAAAAAAAAAAAACAP4AIAAAAAAAAB/gAAAAAAAAAAAAAAAD4AEAAAAAAAAB+AAAAAAAAAAAAAAAAAAAGAAAAAAAAB6AAAAAAAAAAAAAAAAAwAMAAAAAAAAB8AAAAAAAAAAAAAAAAAQAQAAAAAAAAB4AAAAAAAAAAAAAAAAAABgAAAAAAAAB4AAAAAAAAAAAAAAAAAAAAAAAAAAAADwAAAAAAAAAACAAAAAAAAAAAAAAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAAAAAAA+AA//+//gAAAAAAAAAAAsAAAAAAADv/+H//////AAAAAAAAAAB+AAAAJf////8////////gAAAAAAOGAfAAAD///////////////gAABf//7//8AAAH//////////////8AAAn/////8AAAH///////////////8AAE//////4ABw////////////////8AAB3//////gAA////////////////wAAAf/////////////////////////+A/4A///////////////////////////////////////////////////////////////////////////////////////A=");
 var SG=[1.35,103.8],CO=[39.5,-105.8];
 function proj(lat,lon,R,cx,cy,l0,p0){var r=Math.PI/180,la=lat*r,lo=(lon-l0)*r,ph=p0*r;var x=Math.cos(la)*Math.sin(lo),y=Math.cos(ph)*Math.sin(la)-Math.sin(ph)*Math.cos(la)*Math.cos(lo),z=Math.sin(ph)*Math.sin(la)+Math.cos(ph)*Math.cos(la)*Math.cos(lo);return[cx+R*x,cy-R*y,z];}
 function slerp(a,b,f){var r=Math.PI/180;function v(p){return[Math.cos(p[0]*r)*Math.cos(p[1]*r),Math.cos(p[0]*r)*Math.sin(p[1]*r),Math.sin(p[0]*r)];}var A=v(a),B=v(b),d=Math.acos(A[0]*B[0]+A[1]*B[1]+A[2]*B[2]),s=Math.sin(d);var k1=Math.sin((1-f)*d)/s,k2=Math.sin(f*d)/s;var x=k1*A[0]+k2*B[0],y=k1*A[1]+k2*B[1],z=k1*A[2]+k2*B[2];return[Math.asin(z)/r,Math.atan2(y,x)/r];}
@@ -56,8 +57,8 @@ function frame(ts){ if(done)return; if(t0===null)t0=ts; var t=(ts-t0)/1000; ctx.
  if(!RM && t>=T.glob && t<T.col+0.5){ var ga=cl((t-T.glob)/0.4), coll=ease((t-T.col)/0.45), R=M*0.34*(0.25+0.75*ease((t-T.glob)/0.5))*(1-coll);
   var l0=-158-ease((t-T.glob)/1.8)*44,p0=24; ctx.globalAlpha=ga*(1-coll);
   ctx.strokeStyle=FG;ctx.lineWidth=1;ctx.globalAlpha=0.18*ga*(1-coll);ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
-  ctx.fillStyle=FG; for(var la=-75;la<=75;la+=15)for(var lo=0;lo<360;lo+=6){var P=proj(la,lo,R,cx,cy,l0,p0);if(P[2]>0){ctx.globalAlpha=(0.18+0.55*P[2])*ga*(1-coll);ctx.fillRect(P[0]-.7,P[1]-.7,1.4,1.4);}}
-  for(lo=0;lo<360;lo+=30)for(la=-80;la<=80;la+=4){P=proj(la,lo,R,cx,cy,l0,p0);if(P[2]>0){ctx.globalAlpha=(0.08+0.3*P[2])*ga*(1-coll);ctx.fillRect(P[0]-.5,P[1]-.5,1,1);}}
+  ctx.fillStyle=FG; for(var i=0;i<LAND.length;i++){var P=proj(LAND[i][0],LAND[i][1],R,cx,cy,l0,p0);if(P[2]>0){ctx.globalAlpha=(0.22+0.6*P[2])*ga*(1-coll);ctx.fillRect(P[0]-.65,P[1]-.65,1.3,1.3);}}
+  ctx.strokeStyle=FG;ctx.lineWidth=.8;for(var lo=0;lo<360;lo+=30){ctx.beginPath();var f0=1;for(var la=-80;la<=80;la+=5){P=proj(la,lo,R,cx,cy,l0,p0);if(P[2]>0){ctx.globalAlpha=0.07*ga*(1-coll);f0?ctx.moveTo(P[0],P[1]):ctx.lineTo(P[0],P[1]);f0=0;}else f0=1;}ctx.stroke();}
   // signals: three threads travel CO->SG over the Pacific and loop on
   var st=t-T.glob-0.1;
   for(k=0;k<3;k++){ var f=(st/1.15)-k*0.12; if(f<=0)continue; ctx.strokeStyle=k==1?FG:AC; ctx.lineWidth=1.2; ctx.beginPath(); var first=1;
@@ -73,7 +74,7 @@ function frame(ts){ if(done)return; if(t0===null)t0=ts; var t=(ts-t0)/1000; ctx.
  // --- logo ---
  var target=hl?hl.getBoundingClientRect():{left:24,top:20,width:120,height:32};
  var bigH=Math.min(M*0.16,W*0.62/VB.w*VB.h), sc0=bigH/VB.h, bx=cx-VB.w*sc0/2, by=cy-bigH/2;
- var gl=ease((t-T.glide)/(T.end-T.glide-0.2)), sc=sc0+(target.height/VB.h-sc0)*gl, lx=bx+(target.left-bx)*gl, ly=by+(target.top-by)*gl;
+ var gl=ease((t-T.glide)/(T.land-T.glide)), fd=ease((t-T.land)/(T.end-T.land)), sc=sc0+(target.height/VB.h-sc0)*gl, lx=bx+(target.left-bx)*gl, ly=by+(target.top-by)*gl;
  if(t>=T.col+0.15 || RM){ var N=STR.length, dt=(T.drawEnd-T.draw)/N;
   // threads from the collapsed point to each stroke start
   if(!RM){ for(k=0;k<N;k++){ var s0=T.col+0.15+k*0.02, f2=cl((t-s0)/0.35), fade=1-cl((t-(T.draw+k*dt))/0.25); if(f2<=0||fade<=0)continue; var p0s=STR[k].p[0];
@@ -81,11 +82,11 @@ function frame(ts){ if(done)return; if(t0===null)t0=ts; var t=(ts-t0)/1000; ctx.
     ctx.beginPath();ctx.moveTo(cx,cy);var e2=ease(f2);ctx.quadraticCurveTo(cx+(k-N/2)*12,cy-40+(k%3)*30,cx+(ex-cx)*e2,cy+(ey-cy)*e2);ctx.stroke(); } }
   ctx.globalAlpha=1; ctx.lineWidth=2.22*sc;
   for(k=0;k<N;k++){ var f3=cl((t-(T.draw+k*dt))/Math.max(dt*1.8,0.12)); if(f3<=0)continue; var pp=part(STR[k].p,ease(f3)).map(function(p){return[lx+(p[0]-VB.x)*sc,ly+(p[1]-VB.y)*sc];});
-   ctx.strokeStyle=mix(STR[k].c,gl); poly(pp); }
-  if(!small){ var dshow=t>T.drawEnd; var bl=t-T.drawEnd, on=dshow&&!(bl>0.1&&bl<0.2)&&!(bl>0.3&&bl<0.4); if(on){ctx.fillStyle=mix(AC,gl);ctx.beginPath();ctx.arc(lx+(56.4-VB.x)*sc,ly+(27.6-VB.y)*sc,1.77*sc,0,7);ctx.fill();} }
+   ctx.strokeStyle=mix(STR[k].c,fd); poly(pp); }
+  if(!small){ var dshow=t>T.drawEnd; var bl=t-T.drawEnd, on=dshow&&!(bl>0.1&&bl<0.2)&&!(bl>0.3&&bl<0.4); if(on){ctx.fillStyle=mix(AC,fd);ctx.beginPath();ctx.arc(lx+(56.4-VB.x)*sc,ly+(27.6-VB.y)*sc,1.77*sc,0,7);ctx.fill();} }
  }
  // reveal page under glide
- if(t>=T.glide){ wrap.style.background='rgba(15,23,36,'+(1-gl)+')'; }
+ if(t>=T.land){ wrap.style.background='rgba(15,23,36,'+(1-fd)+')'; }
  if(t>=T.end){ finish(); return; }
  raf=requestAnimationFrame(frame);
 }
