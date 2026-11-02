@@ -30,8 +30,8 @@ function moveTile(j){var el=document.getElementById(IDS[j]),all=[].slice.call(ti
 function pick(j,focus){if(j===sel)return;from=needle;sel=j;tA=performance.now()/1000;
  btns.forEach(function(b,i){b.setAttribute('aria-checked',i==j);b.tabIndex=i==j?0:-1;});
  if(focus)btns[j].focus();
- ilbl.textContent=NAMES[j];isl.hidden=false;moveTile(j);addEventListener('resize',hdr);hdr();
- live.textContent=NAMES[j].slice(3)+' selected. Its card is now first.';
+ var soon=btns[j]&&btns[j].hasAttribute('data-soon');ilbl.textContent=NAMES[j]+(soon?' · Coming soon':'');isl.hidden=false;moveTile(j);addEventListener('resize',hdr);hdr();
+ live.textContent=NAMES[j].slice(3)+(soon?' is coming soon. Email is open now.':' selected. Its card is now first.');
  loop&&loop.kick();clearTimeout(timer);
  timer=setTimeout(function(){setOpen(false);},SIG.RM?600:1100);}
 btns.forEach(function(b,i){b.addEventListener('click',function(){pick(i);});

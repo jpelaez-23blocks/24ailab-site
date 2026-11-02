@@ -2,3 +2,13 @@
 @media (min-width:760px){.chans{grid-template-columns:1fr 1fr}}
 .chan{border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff;transition:border-color .3s,box-shadow .3s}
 @media (prefers-reduced-motion:reduce){.chan{transition:none}}
+
+/* coming soon (CONTACT.live) */
+.chan{position:relative}
+.chan.off{background:var(--soft,#f4f7fa);padding-top:0;overflow:hidden}
+.chan.off>.lbl,.chan.off>.note,.chan.off>.row{opacity:.55}
+.chan .soon{margin:0 -18px 14px;padding:9px 18px;background:#e8f1fc;border-bottom:1px solid #cfe0f6;font:500 12px/1.4 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.12em;text-transform:uppercase;color:#1a6fd6;display:flex;align-items:center;gap:8px}
+.chan .soon::before{content:"";width:7px;height:7px;border-radius:50%;background:#1a6fd6;flex:none}
+.chan.off .cbtn[aria-disabled]{pointer-events:none;cursor:default}
+.tbtns [data-soon]{color:#5b6b7d}
+.schip{margin-left:6px;font:500 9px/1 'IBM Plex Mono',ui-monospace,monospace;letter-spacing:.1em;text-transform:uppercase;color:#1a6fd6;border:1px solid #cfe0f6;border-radius:999px;padding:3px 5px;vertical-align:middle}

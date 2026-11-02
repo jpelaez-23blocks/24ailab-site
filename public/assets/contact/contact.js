@@ -1,6 +1,8 @@
 /* Contact previews: shared helpers. 2xAI Lab.
    PLACEHOLDER DATA: every value in CONTACT below is made up for the preview. Swap with real values later. */
 window.CONTACT = {
+  /* What is public on /contact. false = card shows "Coming soon" and none of its details reach the page. */
+  live: { email: true, call: false, social: false, walkin: false, addresses: false },
   email: 'hello@24ailab.com',                       // real
   phoneUS: { label: '+1 (303) 555-0124', tel: '+13035550124' },   // PLACEHOLDER (555 test range)
   phoneSG: { label: '+65 6555 0100', tel: '+6565550100' },        // PLACEHOLDER
@@ -11,8 +13,8 @@ window.CONTACT = {
     { name: 'GitHub', handle: '24ailab', url: 'https://github.com/24ailab' }
   ],
   offices: {                                                       // PLACEHOLDER addresses + hours
-    colorado:  { tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit', alt: '5,328' },
-    singapore: { tz: 'Asia/Singapore', lat: 1.2834,  lon: 103.8607,  open: 9, close: 18, unit: 'celsius' }
+    colorado:  { addr: ['1234 Pearl Street, Suite 200', 'Boulder, CO 80302'], tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit', alt: '5,328' },
+    singapore: { addr: ['10 Example Road, #08-01', 'Singapore 018989'], tz: 'Asia/Singapore', lat: 1.2834,  lon: 103.8607,  open: 9, close: 18, unit: 'celsius' }
   }
 };
 (function(){
@@ -64,4 +66,24 @@ document.querySelectorAll('[data-office] .owx').forEach(function(w){
    .then(function(j){ if(!j||!j.current){ w.hidden=true; return; } var d={t:j.current.temperature_2m,c:j.current.weather_code,at:Date.now()}; try{sessionStorage.setItem(key,JSON.stringify(d));}catch(e){} show(d); })
    .catch(function(){ w.hidden=true; });
 });
+})();
+
+/* Render channel and address details only for channels switched on in CONTACT.live */
+(function(){
+var L=CONTACT.live||{}, d=document;
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function on(card){ if(!card)return; card.classList.remove('off'); card.removeAttribute('aria-disabled'); var s=card.querySelector('.soon'); if(s)s.remove();
+  var id=card.id.replace('ch-',''), b=d.querySelector('[data-ch="'+id+'"]'); if(b){b.removeAttribute('data-soon');b.removeAttribute('aria-label');var c=b.querySelector('.schip');if(c)c.remove();}
+  card.querySelectorAll('[data-href]').forEach(function(a){a.href=a.getAttribute('data-href');a.removeAttribute('aria-disabled');a.removeAttribute('tabindex');}); }
+function slot(n,html){var e=d.querySelector('[data-slot="'+n+'"]'); if(e)e.innerHTML=html;}
+function run(){
+ if(L.call){ slot('call',[CONTACT.phoneUS,CONTACT.phoneSG].map(function(p){return '<p class="big"><a href="tel:'+esc(p.tel)+'">'+esc(p.label)+'</a></p>';}).join('')); on(d.getElementById('ch-call')); }
+ if(L.social){ slot('social','<ul class="soc">'+CONTACT.socials.map(function(x){return '<li><a href="'+esc(x.url)+'" rel="noopener">'+esc(x.name)+' <span>'+esc(x.handle)+'</span></a></li>';}).join('')+'</ul>'); on(d.getElementById('ch-social')); }
+ if(L.walkin) on(d.getElementById('ch-walk'));
+ if(L.addresses) d.querySelectorAll('[data-office]').forEach(function(o){var a=CONTACT.offices[o.getAttribute('data-office')].addr, e=o.querySelector('[data-slot="addr"]'); if(!a||!e)return;
+   var q='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(a.join(' '));
+   e.innerHTML='<address>'+a.map(esc).join('<br>')+'</address><div class="row"><a class="cbtn" href="'+esc(q)+'" rel="noopener">Get directions</a></div>';});
+ d.querySelectorAll('.chan.off a[aria-disabled]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();});});
+}
+if(d.readyState==='loading')d.addEventListener('DOMContentLoaded',run);else run();
 })();
