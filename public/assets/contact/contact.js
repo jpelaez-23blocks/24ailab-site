@@ -14,6 +14,7 @@ window.CONTACT = {
   ],
   offices: {                                                       // PLACEHOLDER addresses + hours
     colorado:  { addr: ['1234 Pearl Street, Suite 200', 'Boulder, CO 80302'], tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit', alt: '5,328' },
+    colombia:  { city: 'Medellín', remote: true, tz: 'America/Bogota', lat: 6.2442, lon: -75.5812, unit: 'celsius' },
     singapore: { addr: ['10 Example Road, #08-01', 'Singapore 018989'], tz: 'Asia/Singapore', lat: 1.2834,  lon: 103.8607,  open: 9, close: 18, unit: 'celsius' }
   }
 };
@@ -46,12 +47,12 @@ document.addEventListener('click', function(e){
 /* office local time, open status, weather */
 function parts(tz){ var p={}; new Intl.DateTimeFormat('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:false,weekday:'short'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value;}); return p; }
 window.officeNow = function(key){ var o=CONTACT.offices[key], p=parts(o.tz), h=+p.hour%24, m=+p.minute, wd=p.weekday;
-  var openNow = wd!=='Sat' && wd!=='Sun' && h>=o.open && h<o.close;
+  var openNow = !o.remote && wd!=='Sat' && wd!=='Sun' && h>=o.open && h<o.close;
   return { h:h, m:m, wd:wd, openNow:openNow, frac:(h*60+m)/1440,
     time: new Intl.DateTimeFormat('en-US',{timeZone:o.tz,hour:'numeric',minute:'2-digit'}).format(new Date()) }; };
 function tick(){ document.querySelectorAll('[data-office]').forEach(function(el){ var k=el.getAttribute('data-office'), n=officeNow(k);
   var t=el.querySelector('.otime'); if(t && t.textContent!==n.time){ t.textContent=n.time; }
-  var s=el.querySelector('.ostat'); if(s) s.textContent = n.openNow ? 'In the office now' : 'Out of office.\nBack at '+CONTACT.offices[k].open+':00 local';
+  var s=el.querySelector('.ostat'); if(s) s.textContent = CONTACT.offices[k].remote ? 'Remote team\nReachable by email' : n.openNow ? 'In the office now' : 'Out of office.\nBack at '+CONTACT.offices[k].open+':00 local';
   el.classList.toggle('isopen', n.openNow); });
   document.dispatchEvent(new Event('officetick')); }
 tick(); setInterval(tick, 30000);

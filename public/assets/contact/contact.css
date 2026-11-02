@@ -82,3 +82,8 @@
 @media (max-width:767px){.office{display:grid;grid-template-columns:clamp(104px,30vw,128px) minmax(0,1fr);grid-template-rows:1fr auto auto 1fr;column-gap:20px;align-items:center;padding:20px 18px}
 .office>.lbl{grid-column:2;grid-row:2;margin:0}.office>.wrow{display:contents}.well{float:none;grid-column:1;grid-row:1/-1;align-self:center;justify-self:center;margin:0;width:100%;shape-outside:none}
 .wrow .winfo{grid-column:2;grid-row:3;align-self:start}.office>[data-slot]{grid-column:2;grid-row:4}.office>[data-slot]:empty{display:none}.office .ostat{min-height:3em}.wrow .otime{font-size:24px}}
+.ocity{color:var(--muted);letter-spacing:.04em}
+@media (min-width:900px){.offices{grid-template-columns:repeat(3,minmax(0,1fr))}
+.office{grid-template-columns:1fr;grid-template-rows:auto auto auto;justify-items:center;text-align:center;row-gap:0;padding:24px 20px 26px}
+.well{grid-column:1;grid-row:1;width:168px;margin:0 0 14px}.office>.lbl{grid-column:1;grid-row:2}.wrow .winfo{grid-column:1;grid-row:3;text-align:center}}
+@media (min-width:768px) and (max-width:899px){.office[data-office=colombia]{grid-column:1/-1;order:3}}

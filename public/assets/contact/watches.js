@@ -106,10 +106,50 @@ function sport(p,place){var s='',i,a,q;
  s+='<path d="M50 120 A52 52 0 0 1 128 88 A60 60 0 0 0 50 120Z" fill="#fff" fill-opacity=".22"/>';
  return s;}
 
+/* digi = Colombia, an original retro digital watch: resin case, brushed face plate, green-grey segment LCD */
+var SEGS={0:'abcdef',1:'bc',2:'abged',3:'abgcd',4:'fgbc',5:'afgcd',6:'afgedc',7:'abc',8:'abcdefg',9:'abcdfg'};
+function seg(x,y,w,h,t,on){var H=h/2,o='';function r(id,X,Y,W,Hh){o+='<rect class="sg" data-s="'+id+'" x="'+f(X)+'" y="'+f(Y)+'" width="'+f(W)+'" height="'+f(Hh)+'" rx="'+f(t/2)+'" transform="skewX(-6)" style="transform-box:fill-box;transform-origin:center"/>';}
+ r('a',x+t*.6,y,w-t*1.2,t);r('g',x+t*.6,y+H-t/2,w-t*1.2,t);r('d',x+t*.6,y+h-t,w-t*1.2,t);
+ r('f',x,y+t*.6,t,H-t*1.1);r('b',x+w-t,y+t*.6,t,H-t*1.1);r('e',x,y+H+t*.5,t,H-t*1.1);r('c',x+w-t,y+H+t*.5,t,H-t*1.1);return o;}
+function digi(p){var s='<defs>'+
+ '<linearGradient id="'+p+'rs" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3e44"/><stop offset=".5" stop-color="#1d2024"/><stop offset="1" stop-color="#101215"/></linearGradient>'+
+ '<linearGradient id="'+p+'pl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eef0f2"/><stop offset=".45" stop-color="#c3c8ce"/><stop offset=".55" stop-color="#d6dade"/><stop offset="1" stop-color="#9fa6ae"/></linearGradient>'+
+ '<linearGradient id="'+p+'lc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#c4ccb2"/><stop offset="1" stop-color="#a9b495"/></linearGradient>'+
+ '<linearGradient id="'+p+'gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></linearGradient>'+
+ '<filter id="'+p+'ds" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000" flood-opacity=".35"/></filter></defs>';
+ /* strap (removed when data-strap=none) */
+ s+='<g class="strap"><path d="M58 82 L62 4 L138 4 L142 82Z" fill="#1b1e22"/><path d="M58 198 L62 276 L138 276 L142 198Z" fill="#1b1e22"/>';
+ for(var i=0;i<5;i++)s+='<rect x="64" y="'+(14+i*12)+'" width="72" height="1.4" fill="#2c3036"/><rect x="64" y="'+(212+i*12)+'" width="72" height="1.4" fill="#2c3036"/>';
+ s+='</g>';
+ /* buttons: two left, one right */
+ [[100],[172]].forEach(function(y){s+='<rect x="11" y="'+y[0]+'" width="12" height="9" rx="2" fill="#2a2e33"/><rect x="11" y="'+(y[0]+1)+'" width="5" height="7" rx="1.5" fill="#4a5058"/>';});
+ s+='<rect x="177" y="136" width="12" height="9" rx="2" fill="#2a2e33"/><rect x="184" y="137" width="5" height="7" rx="1.5" fill="#4a5058"/>';
+ /* case */
+ s+='<path d="M30 78 Q30 70 40 68 L160 68 Q170 70 170 78 L176 108 Q178 140 176 172 L170 202 Q170 210 160 212 L40 212 Q30 210 30 202 L24 172 Q22 140 24 108Z" fill="url(#'+p+'rs)"/>';
+ s+='<path d="M34 80 Q34 74 42 73 L158 73 Q166 74 166 80" fill="none" stroke="#fff" stroke-opacity=".14" stroke-width="1.2"/>';
+ /* face plate */
+ s+='<rect x="36" y="84" width="128" height="112" rx="10" fill="url(#'+p+'pl)"/><rect x="36.5" y="84.5" width="127" height="111" rx="9.5" fill="none" stroke="#7d848c" stroke-opacity=".6"/>';
+ /* top band labels */
+ s+='<text x="44" y="95.5" font-family="IBM Plex Mono,monospace" font-size="6.2" font-weight="600" letter-spacing=".6" fill="#2b3036">LIGHT</text>';
+ s+='<text x="156" y="95.5" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="5" letter-spacing=".5" fill="#2b3036">ALARM CHRONOGRAPH</text>';
+ s+='<rect x="44" y="98.5" width="112" height="1.6" fill="#1a6fd6"/>';
+ /* LCD */
+ s+='<rect x="44" y="104" width="112" height="70" rx="5" fill="#2b3036"/><rect x="48" y="108" width="104" height="62" rx="3" fill="url(#'+p+'lc)"/>';
+ s+='<g fill="#262d20"><text class="dy" x="54" y="120" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600" letter-spacing=".8">MO</text><text class="dd" x="146" y="120" text-anchor="end" font-family="IBM Plex Mono,monospace" font-size="8.5" font-weight="600">2</text><text class="ap" x="54" y="133" font-family="IBM Plex Mono,monospace" font-size="6" font-weight="600">PM</text></g>';
+ s+='<g class="ghost" fill="#262d20" fill-opacity=".07">'+[56,74,96,114].map(function(x){return seg(x,126,14,30,3.2);}).join('')+seg(133,140,8,16,2.2)+seg(142.5,140,8,16,2.2)+'</g>';
+ s+='<g class="lit" fill="#1f261a"></g><g class="col" fill="#1f261a"><rect x="91" y="133" width="3" height="3" rx="1"/><rect x="91" y="146" width="3" height="3" rx="1"/></g>';
+ /* bottom label */
+ s+='<text x="100" y="187" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="5.4" letter-spacing="1.4" fill="#2b3036">WATER RESIST</text>';
+ /* glass glare */
+ s+='<path d="M48 108 L100 108 L70 170 L48 170Z" fill="url(#'+p+'gl)" opacity=".5"/>';
+ return s;}
+function digits(H,M,S){var h=H%12||12,o='';var P=[[56,126,14,30,3.2],[74,126,14,30,3.2],[96,126,14,30,3.2],[114,126,14,30,3.2],[133,140,8,16,2.2],[142.5,140,8,16,2.2]],v=[h>9?1:-1,h%10,Math.floor(M/10),M%10,S<0?-1:Math.floor(S/10),S<0?-1:S%10];
+ v.forEach(function(d,i){if(d<0)return;var q=P[i],all=seg(q[0],q[1],q[2],q[3],q[4]),on=SEGS[d];all.replace(/<rect[^>]*data-s="(\w)"[^>]*\/>/g,function(m,id){if(on.indexOf(id)>-1)o+=m;});});return o;}
+
 var W=[].slice.call(document.querySelectorAll('.watch[data-watch]')),DAYS=['SUN','MON','TUE','WED','THU','FRI','SAT'];
 W.forEach(function(el,ix){var key=el.closest('[data-office]').getAttribute('data-office'),o=CONTACT.offices[key],kind=el.getAttribute('data-watch'),p='w'+ix+kind;
  var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 200 280');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
- svg.innerHTML=kind=='lux'?lux(p):sport(p,{alt:o.alt});el.appendChild(svg);
+ svg.innerHTML=kind=='lux'?lux(p):kind=='digi'?digi(p):sport(p,{alt:o.alt});el.appendChild(svg);
  var mode=el.getAttribute('data-strap')||'full',sg=svg.querySelector('.strap');
  if(mode=='none'){sg.remove();svg.setAttribute('viewBox','4 44 192 192');}
  else if(mode=='stub'){svg.setAttribute('viewBox','0 24 200 232');var m=document.createElementNS(NS,'mask');m.id=p+'fm';m.setAttribute('maskUnits','userSpaceOnUse');
@@ -122,6 +162,7 @@ W.forEach(function(el,ix){var key=el.closest('[data-office]').getAttribute('data
   var d=new Date(Date.now()+off),H=d.getUTCHours(),M=d.getUTCMinutes(),S=d.getUTCSeconds()+d.getUTCMilliseconds()/1000;
   if(kind=='lux'){rot(hh,(H%12+M/60)*30);rot(mh,(M+S/60)*6);if(!RM)rot(sh,S*6);return;}
   var si=Math.floor(S);if(si===last)return;last=si;
+  if(kind=='digi'){svg.querySelector('.lit').innerHTML=digits(H,M,RM?-1:si);svg.querySelector('.dy').textContent=['SU','MO','TU','WE','TH','FR','SA'][d.getUTCDay()];svg.querySelector('.dd').textContent=d.getUTCDate();svg.querySelector('.ap').textContent=H<12?'AM':'PM';svg.querySelector('.col').style.opacity=(RM||si%2==0)?1:.25;return;}
   tm.textContent=(H%12||12)+':'+(M<10?'0':'')+M;dt.textContent=DAYS[d.getUTCDay()]+' '+d.getUTCDate()+(H<12?' · AM':' · PM');
   var w=WX[key];wx.textContent=w?w.label:'';
   var steps=Math.max(0,Math.round((Math.min(H+M/60,21)-6.5)*720));stp.textContent=steps.toLocaleString('en-US');
@@ -131,7 +172,7 @@ W.forEach(function(el,ix){var key=el.closest('[data-office]').getAttribute('data
  function go(){if(!raf&&vis&&!document.hidden)raf=requestAnimationFrame(fr);}
  render();
  if(RM){setInterval(render,1e4);document.addEventListener('wx',render);return;}
- if(kind=='sport'){setInterval(function(){if(vis&&!document.hidden)render();},250);document.addEventListener('wx',render);return;}
+ if(kind=='sport'||kind=='digi'){setInterval(function(){if(vis&&!document.hidden)render();},250);document.addEventListener('wx',render);return;}
  if('IntersectionObserver' in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;go();}).observe(el);
  document.addEventListener('visibilitychange',go);go();});
 })();
