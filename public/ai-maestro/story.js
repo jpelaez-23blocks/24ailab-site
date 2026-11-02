@@ -1,6 +1,6 @@
 /* AI Maestro story: sets the active beat on #stage from the caption in view. */
 (function () {
-  var st = document.getElementById('stage'); if (!st || !document.documentElement.classList.contains('anim')) return;
+  var st = document.getElementById('stage'); if (!st) return;
   var steps = [].slice.call(document.querySelectorAll('.story .step'));
   function set(el) {
     var b = +el.dataset.b, s = +el.dataset.s, c = ['b' + b, 's' + s];

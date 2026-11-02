@@ -113,3 +113,18 @@
 .ge9 .end{opacity:1}
 .anim .step:last-child p{visibility:hidden}
 .ge8 .app{opacity:0}
+
+/* v6: no empty frames; iOS/mobile + reduced motion */
+.still{display:none}.still.has{display:block}
+.anim .stage{height:calc(100svh - 64px)}
+.anim .steps{margin-top:calc(-100svh + 64px)}
+.anim .step{height:90svh}.anim .step:first-child{height:70svh}.anim .step:last-child{height:100svh}
+.screen{width:min(100%,calc((100svh - 200px)*1.6))}
+@media (max-width:719px){
+ .story{padding:0 12px}
+ .anim .stage{padding-top:10px}
+ .screen{width:100%;aspect-ratio:3/4;max-height:calc(100svh - 230px);border-radius:14px}
+ .anim .step p{font-size:16px;padding:11px 16px;max-width:92%}
+ .anim .step{padding-bottom:max(18px,env(safe-area-inset-bottom))}
+}
+@media (prefers-reduced-motion:reduce){.screen *,.screen>div{transition:none!important;animation:none!important}.anim .step p{transition:none}}
