@@ -14,7 +14,7 @@ window.CONTACT = {
   ],
   offices: {                                                       // PLACEHOLDER addresses + hours
     colorado:  { addr: ['1234 Pearl Street, Suite 200', 'Boulder, CO 80302'], tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit', alt: '5,328' },
-    colombia:  { city: 'Medellín', remote: true, tz: 'America/Bogota', lat: 6.2442, lon: -75.5812, unit: 'celsius' },
+    colombia:  { remote: true, tz: 'America/Bogota', lat: 6.2442, lon: -75.5812, unit: 'celsius' },
     singapore: { addr: ['10 Example Road, #08-01', 'Singapore 018989'], tz: 'Asia/Singapore', lat: 1.2834,  lon: 103.8607,  open: 9, close: 18, unit: 'celsius' }
   }
 };
