@@ -58,3 +58,14 @@
 .well .watch{width:84%;aspect-ratio:1;margin:0}
 .wrow .winfo{align-items:center;text-align:center;gap:4px}
 .wrow .otime{font-size:clamp(22px,5vw,26px)}
+/* watch v4: strapless head floats on the card's right edge, text flows around it */
+.office{overflow:visible}
+.wrow{display:block;margin:4px 0 0}
+.wrow .winfo{display:block;text-align:left}
+.wrow .winfo>*{display:block}
+.wrow .otime{margin:6px 0 4px}
+.ostat{white-space:pre-line;line-height:1.5}
+.well{float:right;width:clamp(124px,36vw,176px);margin:2px -30px 10px 10px;background:none;box-shadow:none;border-radius:50%;shape-outside:circle(50%);shape-margin:10px}
+.well .watch{width:100%;filter:drop-shadow(0 10px 14px rgba(29,42,58,.16))}
+.office .map,.office .cbtn{clear:both}
+@media (max-width:560px){.well{width:clamp(112px,34vw,140px);margin-right:-24px}}

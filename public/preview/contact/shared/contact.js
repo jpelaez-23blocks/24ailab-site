@@ -49,7 +49,7 @@ window.officeNow = function(key){ var o=CONTACT.offices[key], p=parts(o.tz), h=+
     time: new Intl.DateTimeFormat('en-US',{timeZone:o.tz,hour:'numeric',minute:'2-digit'}).format(new Date()) }; };
 function tick(){ document.querySelectorAll('[data-office]').forEach(function(el){ var k=el.getAttribute('data-office'), n=officeNow(k);
   var t=el.querySelector('.otime'); if(t && t.textContent!==n.time){ t.textContent=n.time; }
-  var s=el.querySelector('.ostat'); if(s) s.textContent = n.openNow ? 'In the office now' : 'Out of office. Back at '+CONTACT.offices[k].open+':00 local';
+  var s=el.querySelector('.ostat'); if(s) s.textContent = n.openNow ? 'In the office now' : 'Out of office.\nBack at '+CONTACT.offices[k].open+':00 local';
   el.classList.toggle('isopen', n.openNow); });
   document.dispatchEvent(new Event('officetick')); }
 tick(); setInterval(tick, 30000);
