@@ -1,0 +1,6 @@
+.tiles{display:grid;grid-template-columns:1fr;gap:16px;margin-top:18px}
+@media (min-width:760px){.tiles{grid-template-columns:1fr 1fr}}
+.tile{border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff;transition:border-color .3s}
+.tile:hover,.tile:focus-within{border-color:var(--accent)}
+.tsig{display:block;width:100%;height:72px;margin:0 0 10px;border-bottom:1px solid var(--border)}
+@media (prefers-reduced-motion:reduce){.tile{transition:none}}
