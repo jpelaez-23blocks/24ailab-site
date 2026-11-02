@@ -1,0 +1,29 @@
+/* Switchboard: jack plate + patch cable */
+.swb{position:relative}
+.sbtop{position:sticky;top:calc(var(--sbtop,64px) + 8px);z-index:6;display:flex;justify-content:center;margin:18px 0 26px;pointer-events:none}
+.sbisl{pointer-events:auto;cursor:default;animation:none;padding:0 16px 0 8px;gap:10px}
+.sbisl .plug{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle,#0b111a 34%,#3a4658 38%,#8a97a8 62%,#c9d2dc 66%)}
+.sbisl.on .plug{background:radial-gradient(circle,#5aa0ff 30%,#1a6fd6 36%,#0f3f7d 62%,#8fb8ef 66%)}
+.sbisl .icv{opacity:.35;transition:opacity .3s}.sbisl.on .icv{opacity:1}
+.cable{position:absolute;left:0;top:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:5}
+.cable .cbl{fill:none;stroke:#1d2a3a;stroke-width:4;stroke-linecap:round}
+.cable .pe1{fill:#1a6fd6}.cable .pe2{fill:#1d2a3a;stroke:#1a6fd6;stroke-width:2}
+.cable.off{display:none}
+.plate{position:relative;border-radius:20px;padding:40px 18px 20px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.18) 0 1px,transparent 1px 3px),linear-gradient(180deg,#eef1f5,#dde3eb);border:1px solid #cfd8e3;box-shadow:inset 0 1px 0 #fff,inset 0 -2px 6px rgba(29,42,58,.08),0 10px 30px rgba(29,42,58,.08)}
+.scr{position:absolute;width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fff,#b7c2cf 70%);box-shadow:inset 0 0 0 1px rgba(29,42,58,.2)}
+.scr::after{content:"";position:absolute;left:2px;right:2px;top:5.5px;height:1px;background:rgba(29,42,58,.45);transform:rotate(35deg)}
+.s1{left:12px;top:12px}.s2{right:12px;top:12px}.s3{left:12px;bottom:12px}.s4{right:12px;bottom:12px}
+.plbl{position:absolute;left:34px;top:11px;margin:0;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6a7a8e}
+.jacks{display:grid;grid-template-columns:1fr;gap:12px;align-items:start}
+@media (min-width:760px){.jacks{grid-template-columns:1fr 1fr}}
+.jt{border-radius:14px;background:#f8fafc;border:1px solid #cfd8e3;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(29,42,58,.06);transition:border-color .3s,box-shadow .3s}
+.jt.on{border-color:var(--accent);box-shadow:0 0 0 3px var(--hl)}
+.jh{display:flex;align-items:center;gap:12px;width:100%;min-height:64px;padding:10px 12px 10px 16px;border:0;background:none;cursor:pointer;text-align:left;color:var(--text);font:600 16px Outfit,system-ui,sans-serif;border-radius:14px}
+.jl{white-space:nowrap}.jl .mono{color:var(--muted);margin-right:4px}.jt.on .jl,.jt.on .jl .mono{color:var(--accent)}
+.jh .tsig{flex:1;min-width:0;height:40px;margin:0;border:0}
+.sock{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:radial-gradient(circle,#0b111a 30%,#36414f 34%,#7d8a9b 56%,#d4dbe4 60%,#eef2f6 70%);box-shadow:inset 0 1px 2px rgba(0,0,0,.3),0 1px 0 #fff}
+.jt.on .sock{background:radial-gradient(circle,#1d2a3a 30%,#1a6fd6 34%,#0f3f7d 56%,#d4dbe4 60%,#eef2f6 70%)}
+.jd{padding:0 16px 18px}
+.jd:not([hidden]){animation:jd .35s ease}
+@keyframes jd{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.jt,.sbisl .icv{transition:none}.jd:not([hidden]){animation:none}}

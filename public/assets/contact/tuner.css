@@ -1,0 +1,4 @@
+.chans{display:grid;grid-template-columns:1fr;gap:16px;margin-top:20px}
+@media (min-width:760px){.chans{grid-template-columns:1fr 1fr}}
+.chan{border:1px solid var(--border);border-radius:16px;padding:18px;background:#fff;transition:border-color .3s,box-shadow .3s}
+@media (prefers-reduced-motion:reduce){.chan{transition:none}}

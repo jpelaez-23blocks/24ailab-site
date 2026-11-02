@@ -1,0 +1,19 @@
+/* Tuner: one analog radio band */
+.radio{position:relative;border-radius:22px;padding:14px 14px 0;background:linear-gradient(180deg,#22324a,#162233);box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 18px 40px rgba(15,23,34,.22)}
+.band{position:relative;border-radius:14px;background:radial-gradient(120% 140% at 50% 0,#2a3d58 0,#152131 70%);box-shadow:inset 0 2px 10px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.06);cursor:ew-resize;touch-action:pan-y;outline:none}
+.band:focus-visible{box-shadow:inset 0 2px 10px rgba(0,0,0,.45),0 0 0 3px #8fb8ef}
+.bcv{display:block;width:100%;height:clamp(170px,26vw,230px)}
+.stns{position:relative;height:64px}
+.stn{position:absolute;top:10px;transform:translateX(-50%);min-height:44px;padding:0 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.04);color:#c9d6e6;font:600 14px Outfit,system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+.stn .mono{color:#7f93ad;margin-right:2px}
+.stn:hover{border-color:#8fb8ef;color:#fff}
+.stn[aria-current=true]{background:#1a6fd6;border-color:#1a6fd6;color:#fff}.stn[aria-current=true] .mono{color:#cfe2ff}
+@media (max-width:560px){.radio{padding:10px 10px 0}.stn{font-size:0;padding:0;width:44px}.stn .mono{font-size:13px;margin:0;color:inherit}}
+.nowp{margin-top:20px;border:1px solid var(--border);border-radius:18px;padding:18px 18px 20px;background:#fff;min-height:120px}
+.nph{display:flex;align-items:center;gap:8px;margin:0 0 6px;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.nph .dot{width:8px;height:8px;border-radius:50%;background:#c3ccd8}
+.nowp.on .nph .dot{background:var(--accent);box-shadow:0 0 0 4px var(--hl)}
+.npe{color:var(--muted);margin:6px 0 0}
+.chan{animation:npin .4s ease}
+@keyframes npin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.chan{animation:none}}
