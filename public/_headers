@@ -1,0 +1,4 @@
+/preview/*
+  X-Robots-Tag: noindex, nofollow
+/ai-maestro/v1/*
+  X-Robots-Tag: noindex, nofollow
