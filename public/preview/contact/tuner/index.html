@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300..800&display=swap">
 <link rel="stylesheet" href="/styles.css?v=5">
-<link rel="stylesheet" href="/preview/contact/shared/contact.css?v=1">
+<link rel="stylesheet" href="/preview/contact/shared/contact.css?v=2">
 <link rel="stylesheet" href="/preview/contact/tuner/tuner.css?v=1">
 </head>
 <body class="home2 contactp">
@@ -67,8 +67,7 @@
 <div class="offices">
 <article class="office" data-office="colorado">
 <p class="lbl">Colorado</p>
-<div class="top"><span class="otime" aria-label="Local time in Colorado">--:--</span><span class="owx" hidden></span></div>
-<p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p>
+<div class="wrow"><div class="watch" data-watch="sport"></div><div class="winfo"><span class="otime" aria-label="Local time in Colorado">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
 <!-- PLACEHOLDER address -->
 <address data-placeholder="address">1234 Pearl Street, Suite 200<br>Boulder, CO 80302</address>
 <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=1234+Pearl+Street+Boulder+CO+80302" rel="noopener" aria-label="Directions to the Colorado office (opens maps)"><svg viewBox="0 0 320 140" aria-hidden="true"><rect width="320" height="140" fill="#f4f7fa"/>
@@ -79,8 +78,7 @@
 </article>
 <article class="office" data-office="singapore">
 <p class="lbl">Singapore</p>
-<div class="top"><span class="otime" aria-label="Local time in Singapore">--:--</span><span class="owx" hidden></span></div>
-<p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p>
+<div class="wrow"><div class="watch" data-watch="lux"></div><div class="winfo"><span class="otime" aria-label="Local time in Singapore">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
 <!-- PLACEHOLDER address -->
 <address data-placeholder="address">10 Example Road, #08-01<br>Singapore 018989</address>
 <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=10+Example+Road+Singapore+018989" rel="noopener" aria-label="Directions to the Singapore office (opens maps)"><svg viewBox="0 0 320 140" aria-hidden="true"><rect width="320" height="140" fill="#f4f7fa"/>
@@ -104,7 +102,8 @@
 </div></footer>
 
 <p id="copy-live" class="sr" aria-live="polite"></p>
-<script src="/preview/contact/shared/contact.js?v=1"></script>
+<script src="/preview/contact/shared/contact.js?v=2"></script>
+<script src="/preview/contact/shared/watches.js?v=1" defer></script>
 <script src="/preview/contact/tuner/tuner.js?v=1" defer></script>
 <script src="/consent.js?v=2" defer></script>
 <script src="/nav.js" defer></script>

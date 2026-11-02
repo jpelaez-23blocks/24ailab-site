@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
+<script>document.documentElement.classList.add('js-reveal')</script>
 <script>try{if(/[?&]replay/.test(location.search)||!sessionStorage.getItem('splash24')){var d=document.documentElement;d.classList.add('splash-pending');setTimeout(function(){d.classList.remove('splash-pending')},2500)}}catch(e){}</script>
 <style>html.splash-pending::before{content:"";position:fixed;inset:0;z-index:9998;background:#0f1724}</style>
 
@@ -34,7 +35,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300..800&display=swap">
 <link rel="stylesheet" href="/styles.css?v=5">
 <link rel="stylesheet" href="/project-cards/cards.css">
-<link rel="stylesheet" href="/assets/home/home.css?v=1">
+<link rel="stylesheet" href="/assets/home/home.css?v=2">
 </head>
 <body class="home2">
 <header class="site"><a class="ttl" href="/" aria-label="2xAI Lab"><svg class="logo lg" viewBox="-1.11 13.89 115.03 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.7" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M50.90 33.10 L50.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M56.40 33.10 L56.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.40" cy="27.60" r="1.77" fill="#1a6fd6"/><g transform="translate(69.51,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg><svg class="logo sm" viewBox="-1.11 13.89 88.63 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(43.11,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg></a><button type="button" class="navbtn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button><nav id="site-nav" class="nav" aria-label="Main"><a href="/" aria-current="page">Home</a><a href="/lab">Lab</a><a href="/projects">Projects</a><a href="/contact">Contact</a></nav></header>
@@ -47,32 +48,32 @@
 </section>
 
 <section class="sec how" aria-labelledby="hw-h">
-<p class="lbl">How we work</p>
+<div data-reveal><p class="lbl">How we work</p>
 <h2 id="hw-h">From idea to shipped.</h2>
-<p class="sub">Every project runs through the same loop. Many ideas stop at a prototype. The ones that hold up ship.</p>
-<canvas class="sig" aria-hidden="true"></canvas>
+<p class="sub">Every project runs through the same loop. Many ideas stop at a prototype. The ones that hold up ship.</p></div>
+<canvas class="sig" aria-hidden="true" data-reveal style="--i:1"></canvas>
 <ol class="steps">
-<li><span class="lbl">01 Idea</span><h3>Start with a real problem</h3><p>Something people actually need, stated in one line.</p></li>
-<li><span class="lbl">02 Prototype</span><h3>Build a working version</h3><p>Something you can use, not a slide deck.</p></li>
-<li><span class="lbl">03 Test</span><h3>Use it and measure it</h3><p>We keep what holds up and drop what doesn't.</p></li>
-<li><span class="lbl">04 Ship</span><h3>Put it live</h3><p>Then keep improving it in public.</p></li>
+<li data-reveal style="--i:2"><span class="lbl">01 Idea</span><h3>Start with a real problem</h3><p>Something people actually need, stated in one line.</p></li>
+<li data-reveal style="--i:3"><span class="lbl">02 Prototype</span><h3>Build a working version</h3><p>Something you can use, not a slide deck.</p></li>
+<li data-reveal style="--i:4"><span class="lbl">03 Test</span><h3>Use it and measure it</h3><p>We keep what holds up and drop what doesn't.</p></li>
+<li data-reveal style="--i:5"><span class="lbl">04 Ship</span><h3>Put it live</h3><p>Then keep improving it in public.</p></li>
 </ol>
 </section>
 
 
 <section class="sec" id="work" aria-labelledby="pj-h">
-<p class="lbl">Projects</p>
-<h2 id="pj-h">What we build.</h2>
-<div class="pcards" data-pcards><noscript><article class="pcard"><h2>FM</h2><p>World radio, from 1979 to 2026.</p><p><a href="https://fm.24ailab.com">Open FM →</a> · <a href="/fm/">Project story</a></p></article></noscript></div>
+<div data-reveal><p class="lbl">Projects</p>
+<h2 id="pj-h">What we build.</h2></div>
+<div class="pcards" data-pcards data-reveal style="--i:1"><noscript><article class="pcard"><h2>FM</h2><p>World radio, from 1979 to 2026.</p><p><a href="https://fm.24ailab.com">Open FM →</a> · <a href="/fm/">Project story</a></p></article></noscript></div>
 </section>
 
 <section class="sec where" aria-labelledby="tm-h">
-<div><p class="lbl">Team</p><h2 id="tm-h">One lab, three places.</h2><p class="sub">Our team works from Colorado, Colombia and Singapore.</p></div>
-<div id="globe" role="img" aria-label="Globe with pins in Colorado, Colombia and Singapore"><p class="gfb">Colorado · Colombia · Singapore</p></div>
+<div data-reveal><p class="lbl">Team</p><h2 id="tm-h">One lab, three places.</h2><p class="sub">Our team works from Colorado, Colombia and Singapore.</p></div>
+<div data-reveal style="--i:1;min-width:0"><div id="globe" role="img" aria-label="Globe with pins in Colorado, Colombia and Singapore"><p class="gfb">Colorado · Colombia · Singapore</p></div></div>
 </section>
 
 <section class="sec" aria-labelledby="ct-h">
-<div class="contact2"><div><p class="lbl">Contact</p><h2 id="ct-h">Have an idea?</h2><p>Tell us. We'll show you a working prototype.</p></div>
+<div class="contact2" data-reveal><div><p class="lbl">Contact</p><h2 id="ct-h">Have an idea?</h2><p>Tell us. We'll show you a working prototype.</p></div>
 <div class="cta"><a class="btn pri" href="/contact">Get in touch</a><a class="btn" href="mailto:hello@24ailab.com">hello@24ailab.com</a></div></div>
 </section>
 </div>
@@ -87,10 +88,11 @@
 </div></footer>
 <script src="/project-cards/data.js?v=2" defer></script>
 <script src="/project-cards/cards.js?v=2" defer></script>
-<script src="/assets/home/signals.js?v=1" defer></script>
+<script src="/assets/home/signals.js?v=2" defer></script>
 <script src="/globe.js" defer></script>
 <script src="/consent.js?v=2" defer></script>
 <script src="/nav.js" defer></script>
+<script src="/assets/home/reveal.js?v=2" defer></script>
 <script src="/preview/splash/splash.js?v=5"></script>
 </body>
 </html>

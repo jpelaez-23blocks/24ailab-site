@@ -11,7 +11,7 @@ window.CONTACT = {
     { name: 'GitHub', handle: '24ailab', url: 'https://github.com/24ailab' }
   ],
   offices: {                                                       // PLACEHOLDER addresses + hours
-    colorado:  { tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit' },
+    colorado:  { tz: 'America/Denver',  lat: 40.0150, lon: -105.2705, open: 9, close: 18, unit: 'fahrenheit', alt: '5,328' },
     singapore: { tz: 'Asia/Singapore', lat: 1.2834,  lon: 103.8607,  open: 9, close: 18, unit: 'celsius' }
   }
 };
@@ -56,7 +56,7 @@ tick(); setInterval(tick, 30000);
 var WMO={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Drizzle',53:'Drizzle',55:'Drizzle',61:'Rain',63:'Rain',65:'Heavy rain',71:'Snow',73:'Snow',75:'Heavy snow',80:'Showers',81:'Showers',82:'Showers',95:'Storm'};
 document.querySelectorAll('[data-office] .owx').forEach(function(w){
   var k=w.closest('[data-office]').getAttribute('data-office'), o=CONTACT.offices[k], key='wx-'+k;
-  function show(d){ if(!d||d.t==null){ w.hidden=true; return; } w.textContent=Math.round(d.t)+(o.unit==='celsius'?'°C':'°F')+' · '+(WMO[d.c]||'Weather'); w.hidden=false; }
+  function show(d){ if(!d||d.t==null){ w.hidden=true; return; } var lab=Math.round(d.t)+(o.unit==='celsius'?'°C':'°F')+' · '+(WMO[d.c]||'Weather'); w.textContent=lab; w.hidden=false; (window.WX=window.WX||{})[k]={label:lab.toUpperCase()}; document.dispatchEvent(new Event('wx')); }
   try{ var c=JSON.parse(sessionStorage.getItem(key)||'null'); if(c&&Date.now()-c.at<9e5){ show(c); return; } }catch(e){}
   var ctl = window.AbortController ? new AbortController() : null; if(ctl) setTimeout(function(){ ctl.abort(); }, 5000);
   fetch('https://api.open-meteo.com/v1/forecast?latitude='+o.lat+'&longitude='+o.lon+'&current=temperature_2m,weather_code&temperature_unit='+o.unit+'&timezone=auto', ctl?{signal:ctl.signal}:{})
