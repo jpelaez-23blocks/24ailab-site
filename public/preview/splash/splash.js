@@ -1,7 +1,8 @@
 /* 2xAI Lab splash intro (preview). Canvas only, no deps. */
 (function(){
+var DE=document.documentElement;function unguard(){DE.classList.remove('splash-pending');}
 var q=location.search, force=/[?&]replay/.test(q);
-try{ if(!force && sessionStorage.getItem('splash24')) return; sessionStorage.setItem('splash24','1'); }catch(e){}
+try{ if(!force && sessionStorage.getItem('splash24')){unguard();return;} sessionStorage.setItem('splash24','1'); }catch(e){}
 var RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var BG='#0f1724',FG='#f7f9fc',AC='#5aa2ff';
 var wrap=document.createElement('div'); wrap.id='splash'; wrap.setAttribute('aria-hidden','true');
@@ -9,7 +10,7 @@ wrap.style.cssText='position:fixed;inset:0;z-index:9999;background:'+BG+';transi
 var cv=document.createElement('canvas'); cv.style.cssText='position:absolute;inset:0;width:100%;height:100%';
 var sk=document.createElement('button'); sk.type='button'; sk.textContent='Skip'; sk.tabIndex=-1;
 sk.style.cssText='position:absolute;right:20px;bottom:max(20px,env(safe-area-inset-bottom));background:none;border:1px solid #ffffff33;color:#f7f9fcb3;font:500 13px Inter,system-ui,sans-serif;padding:7px 14px;border-radius:999px;cursor:pointer;letter-spacing:.3px';
-wrap.appendChild(cv); wrap.appendChild(sk); document.body.appendChild(wrap);
+wrap.appendChild(cv); wrap.appendChild(sk); document.body.appendChild(wrap); unguard();
 var ctx=cv.getContext('2d'),W,H,D;
 function size(){D=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;ctx.setTransform(D,0,0,D,0,0);} size(); addEventListener('resize',size);
 // logo geometry (same units as header SVG; Lab offset 69.51 lg / 43.11 sm)
