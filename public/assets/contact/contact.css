@@ -69,3 +69,8 @@
 .well .watch{width:100%;filter:drop-shadow(0 10px 14px rgba(29,42,58,.16))}
 .office .map,.office .cbtn{clear:both}
 @media (max-width:560px){.well{width:clamp(112px,34vw,140px);margin-right:-24px}}
+/* offices: full section width, 2 equal columns on desktop (matches .chans) */
+.c2>.sec{align-self:stretch;width:100%}
+.offices{align-items:stretch}
+@media (min-width:768px){.offices{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.well{margin-right:-22px}}
+.c2 .team{max-width:none;text-align:left}
