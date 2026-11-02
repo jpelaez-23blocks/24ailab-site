@@ -23,10 +23,12 @@ function lux(p){var s='',i,a,q;
  '<filter id="'+p+'cs" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1d2a3a" flood-opacity=".28"/></filter>'+
  '<clipPath id="'+p+'dc"><circle cx="100" cy="140" r="64"/></clipPath>'+
  '</defs>';
+ s+='<g class="strap">';
  /* leather strap with stitching */
  s+='<path d="M70 0 H130 L127 70 H73 Z" fill="url(#'+p+'st)"/><path d="M73 210 H127 L130 280 H70 Z" fill="url(#'+p+'st)"/>';
  s+='<path d="M76 0 L78 66 M124 0 L122 66 M78 214 L76 280 M122 214 L124 280" stroke="#e6cf9f" stroke-opacity=".55" stroke-width=".8" stroke-dasharray="3 2.4" fill="none"/>';
  s+='<path d="M70 0 H130 M73 70 H127" stroke="#000" stroke-opacity=".15"/>';
+ s+='</g>';
  /* lugs + case */
  s+='<g filter="url(#'+p+'cs)"><path d="M68 92 L74 58 Q76 54 82 56 L88 74 Z M132 92 L126 58 Q124 54 118 56 L112 74 Z M68 188 L74 222 Q76 226 82 224 L88 206 Z M132 188 L126 222 Q124 226 118 224 L112 206 Z" fill="url(#'+p+'g)"/>';
  /* crown */
@@ -70,10 +72,12 @@ function sport(p,place){var s='',i,a,q;
  '<linearGradient id="'+p+'s" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#16191d"/><stop offset=".25" stop-color="#2d333a"/><stop offset=".5" stop-color="#363d45"/><stop offset=".75" stop-color="#2d333a"/><stop offset="1" stop-color="#14171a"/></linearGradient>'+
  '<filter id="'+p+'cs" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#1d2a3a" flood-opacity=".3"/></filter>'+
  '</defs>';
+ s+='<g class="strap">';
  /* silicone strap with grooves and holes */
  s+='<path d="M64 0 H136 L132 72 H68 Z" fill="url(#'+p+'s)"/><path d="M68 208 H132 L136 280 H64 Z" fill="url(#'+p+'s)"/>';
  for(i=0;i<5;i++)s+='<path d="M'+(69+i*.4)+' '+(14+i*11)+' H'+(131-i*.4)+'" stroke="#000" stroke-opacity=".35" stroke-width="1.4"/><path d="M'+(69+i*.4)+' '+(15.4+i*11)+' H'+(131-i*.4)+'" stroke="#fff" stroke-opacity=".06"/>';
  for(i=0;i<4;i++)s+='<ellipse cx="100" cy="'+(232+i*13)+'" rx="3.2" ry="2.4" fill="#0b0d0f"/><ellipse cx="100" cy="'+(231.3+i*13)+'" rx="3.2" ry="1.4" fill="#fff" fill-opacity=".05"/>';
+ s+='</g>';
  /* buttons: 3 left, 2 right */
  s+='<g filter="url(#'+p+'cs)">';
  [[-60,0],[-90,0],[-120,0],[60,1],[120,0]].forEach(function(b){var ang=b[0];
@@ -106,6 +110,11 @@ var W=[].slice.call(document.querySelectorAll('.watch[data-watch]')),DAYS=['SUN'
 W.forEach(function(el,ix){var key=el.closest('[data-office]').getAttribute('data-office'),o=CONTACT.offices[key],kind=el.getAttribute('data-watch'),p='w'+ix+kind;
  var svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 200 280');svg.setAttribute('aria-hidden','true');svg.setAttribute('focusable','false');
  svg.innerHTML=kind=='lux'?lux(p):sport(p,{alt:o.alt});el.appendChild(svg);
+ var mode=el.getAttribute('data-strap')||'full',sg=svg.querySelector('.strap');
+ if(mode=='none'){sg.remove();svg.setAttribute('viewBox','4 44 192 192');}
+ else if(mode=='stub'){svg.setAttribute('viewBox','0 24 200 232');var m=document.createElementNS(NS,'mask');m.id=p+'fm';m.setAttribute('maskUnits','userSpaceOnUse');
+  m.innerHTML='<linearGradient id="'+p+'fg" x1="0" y1="24" x2="0" y2="256" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".2" stop-color="#fff" stop-opacity=".9"/><stop offset=".8" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient><rect x="0" y="0" width="200" height="280" fill="url(#'+p+'fg)"/>';
+  svg.querySelector('defs').appendChild(m);sg.setAttribute('mask','url(#'+p+'fm)');}
  var off=offset(o.tz),offAt=Date.now(),last=-1,vis=true,raf=0;
  var hh=svg.querySelector('.hh'),mh=svg.querySelector('.mh'),sh=svg.querySelector('.sh'),tm=svg.querySelector('.tm'),dt=svg.querySelector('.dt'),wx=svg.querySelector('.wx'),stp=svg.querySelector('.stp'),arc=svg.querySelector('.arc'),sd=svg.querySelector('.sd');
  if(RM){if(sh)sh.style.display='none';if(sd)sd.style.display='none';}

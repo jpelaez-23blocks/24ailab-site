@@ -52,3 +52,9 @@
 /* tap targets */
 .big a,.c2 .sub a,.note a{display:inline-flex;align-items:center;min-height:44px}
 .c2 li > a{display:inline-flex;align-items:center;min-height:44px}
+/* watch v3: head set in a recessed well (straps removed) */
+.wrow{display:flex;flex-direction:column;align-items:center;gap:10px;margin:8px 0 6px}
+.well{width:clamp(172px,54vw,216px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 50% 35%,#f6f8fb 0,#e6ebf2 72%,#dde4ed 100%);box-shadow:inset 0 7px 16px rgba(29,42,58,.17),inset 0 -3px 4px rgba(255,255,255,.95),0 1px 0 #fff}
+.well .watch{width:84%;aspect-ratio:1;margin:0}
+.wrow .winfo{align-items:center;text-align:center;gap:4px}
+.wrow .otime{font-size:clamp(22px,5vw,26px)}

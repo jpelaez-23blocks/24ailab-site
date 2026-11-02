@@ -13,8 +13,9 @@
 <link rel="preconnect" href="https://api.open-meteo.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@300..800&display=swap">
 <link rel="stylesheet" href="/styles.css?v=5">
-<link rel="stylesheet" href="/preview/contact/shared/contact.css?v=2">
-<link rel="stylesheet" href="/preview/contact/tuner/tuner.css?v=1">
+<link rel="stylesheet" href="/preview/contact/shared/contact.css?v=3">
+<link rel="stylesheet" href="/preview/contact/shared/dock.css?v=1">
+<link rel="stylesheet" href="/preview/contact/tuner/tuner.css?v=2">
 </head>
 <body class="home2 contactp">
 <header class="site"><a class="ttl" href="/" aria-label="2xAI Lab"><svg class="logo lg" viewBox="-1.11 13.89 115.03 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.7" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M50.90 33.10 L50.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M56.40 33.10 L56.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.40" cy="27.60" r="1.77" fill="#1a6fd6"/><g transform="translate(69.51,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg><svg class="logo sm" viewBox="-1.11 13.89 88.63 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(43.11,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg></a><button type="button" class="navbtn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button><nav id="site-nav" class="nav" aria-label="Main"><a href="/">Home</a><a href="/lab">Lab</a><a href="/projects">Projects</a><a href="/contact" aria-current="page">Contact</a></nav></header>
@@ -35,15 +36,21 @@
 <p class="lede">Write, call, message or walk in. Whichever way, a person from the team answers.</p></section>
 <section class="sec tun" aria-labelledby="tu-h">
 <h2 id="tu-h" class="sr">Tune to a channel</h2>
+<div class="sbdock">
+<button type="button" class="island" aria-expanded="true" aria-controls="sbdial" hidden><canvas class="icv" aria-hidden="true"></canvas><span class="ilbl">Pick a channel</span><span class="chev" aria-hidden="true"></span><span class="sr ihint">Show the channel dial</span></button>
+<div class="sbdial" id="sbdial"><div class="sbin">
 <div class="dial"><canvas class="tcv" aria-hidden="true"></canvas></div>
 <div class="tbtns" role="radiogroup" aria-label="Channels">
-<button type="button" role="radio" aria-checked="true" tabindex="0" data-ch="email" aria-controls="ch-email"><span class="mono">01</span> Email</button>
+<button type="button" role="radio" aria-checked="false" tabindex="0" data-ch="email" aria-controls="ch-email"><span class="mono">01</span> Email</button>
 <button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="call" aria-controls="ch-call"><span class="mono">02</span> Call</button>
 <button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="social" aria-controls="ch-social"><span class="mono">03</span> Social</button>
 <button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="walk" aria-controls="ch-walk"><span class="mono">04</span> Walk in</button>
 </div>
+</div></div>
+</div>
+<p id="tu-live" class="sr" aria-live="polite"></p>
 <div class="chans">
-<article class="chan on" id="ch-email"><p class="lbl">01 Email</p><p class="big"><a href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">hello@24ailab.com</a></p>
+<article class="chan" id="ch-email"><p class="lbl">01 Email</p><p class="big"><a href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">hello@24ailab.com</a></p>
 <p class="note">Best for project ideas and anything with details. We reply within 2 working days.<!-- PLACEHOLDER reply time --></p>
 <div class="row"><a class="cbtn pri" href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">Write an email</a><button type="button" class="cbtn" data-copy="hello@24ailab.com">Copy address</button></div></article>
 <article class="chan" id="ch-call"><p class="lbl">02 Call</p><p class="big" data-placeholder="phone"><a href="tel:+13035550124">+1 (303) 555-0124</a></p>
@@ -67,7 +74,7 @@
 <div class="offices">
 <article class="office" data-office="colorado">
 <p class="lbl">Colorado</p>
-<div class="wrow"><div class="watch" data-watch="sport"></div><div class="winfo"><span class="otime" aria-label="Local time in Colorado">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
+<div class="wrow"><div class="well"><div class="watch" data-watch="sport" data-strap="none"></div></div><div class="winfo"><span class="otime" aria-label="Local time in Colorado">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
 <!-- PLACEHOLDER address -->
 <address data-placeholder="address">1234 Pearl Street, Suite 200<br>Boulder, CO 80302</address>
 <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=1234+Pearl+Street+Boulder+CO+80302" rel="noopener" aria-label="Directions to the Colorado office (opens maps)"><svg viewBox="0 0 320 140" aria-hidden="true"><rect width="320" height="140" fill="#f4f7fa"/>
@@ -78,7 +85,7 @@
 </article>
 <article class="office" data-office="singapore">
 <p class="lbl">Singapore</p>
-<div class="wrow"><div class="watch" data-watch="lux"></div><div class="winfo"><span class="otime" aria-label="Local time in Singapore">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
+<div class="wrow"><div class="well"><div class="watch" data-watch="lux" data-strap="none"></div></div><div class="winfo"><span class="otime" aria-label="Local time in Singapore">--:--</span><span class="owx" hidden></span><p class="ostat">Office hours, Mon to Fri, 9:00 to 18:00 local</p></div></div>
 <!-- PLACEHOLDER address -->
 <address data-placeholder="address">10 Example Road, #08-01<br>Singapore 018989</address>
 <a class="map" href="https://www.google.com/maps/search/?api=1&amp;query=10+Example+Road+Singapore+018989" rel="noopener" aria-label="Directions to the Singapore office (opens maps)"><svg viewBox="0 0 320 140" aria-hidden="true"><rect width="320" height="140" fill="#f4f7fa"/>
@@ -102,9 +109,9 @@
 </div></footer>
 
 <p id="copy-live" class="sr" aria-live="polite"></p>
-<script src="/preview/contact/shared/contact.js?v=2"></script>
-<script src="/preview/contact/shared/watches.js?v=1" defer></script>
-<script src="/preview/contact/tuner/tuner.js?v=1" defer></script>
+<script src="/preview/contact/shared/contact.js?v=3"></script>
+<script src="/preview/contact/shared/watches.js?v=2" defer></script>
+<script src="/preview/contact/shared/dock.js?v=1" defer></script>
 <script src="/consent.js?v=2" defer></script>
 <script src="/nav.js" defer></script>
 </body>
