@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="/styles.css?v=5">
 <link rel="stylesheet" href="/preview/contact/shared/contact.css?v=4">
 <link rel="stylesheet" href="/preview/contact/shared/dock.css?v=1">
-<link rel="stylesheet" href="/preview/contact/switchboard/switchboard.css?v=3">
+<link rel="stylesheet" href="/preview/contact/switchboard/switchboard.css?v=4">
 </head>
 <body class="home2 contactp">
 <header class="site"><a class="ttl" href="/" aria-label="2xAI Lab"><svg class="logo lg" viewBox="-1.11 13.89 115.03 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.7" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M50.90 33.10 L50.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M56.40 33.10 L56.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.40" cy="27.60" r="1.77" fill="#1a6fd6"/><g transform="translate(69.51,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg><svg class="logo sm" viewBox="-1.11 13.89 88.63 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(43.11,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg></a><button type="button" class="navbtn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button><nav id="site-nav" class="nav" aria-label="Main"><a href="/">Home</a><a href="/lab">Lab</a><a href="/projects">Projects</a><a href="/contact" aria-current="page">Contact</a></nav></header>
@@ -34,39 +34,31 @@
 <main class="c2">
 <section class="hero"><p class="lbl">Contact</p><h1>Pick a channel.</h1>
 <p class="lede">Write, call, message or walk in. Whichever way, a person from the team answers.</p></section>
-<section class="sec" aria-labelledby="sw-h">
+<section class="sec swb" aria-labelledby="sw-h">
 <p class="lbl">Channels</p>
 <h2 id="sw-h">Four ways in.</h2>
-<p class="sub">Tune the dial to a channel. Its card comes up first.</p>
-<div class="sbdock">
-<button type="button" class="island" aria-expanded="true" aria-controls="sbdial" hidden><canvas class="icv" aria-hidden="true"></canvas><span class="ilbl">Pick a channel</span><span class="chev" aria-hidden="true"></span><span class="sr ihint">Show the channel dial</span></button>
-<div class="sbdial" id="sbdial"><div class="sbin">
-<div class="dial"><canvas class="tcv" aria-hidden="true"></canvas></div>
-<div class="tbtns" role="radiogroup" aria-label="Channels">
-<button type="button" role="radio" aria-checked="false" tabindex="0" data-ch="email" aria-controls="ch-email"><span class="mono">01</span> Email</button>
-<button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="call" aria-controls="ch-call"><span class="mono">02</span> Call</button>
-<button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="social" aria-controls="ch-social"><span class="mono">03</span> Social</button>
-<button type="button" role="radio" aria-checked="false" tabindex="-1" data-ch="walk" aria-controls="ch-walk"><span class="mono">04</span> Walk in</button>
-</div>
-</div></div>
-</div>
-<p id="sb-live" class="sr" aria-live="polite"></p>
-<div class="tiles">
-<article class="tile" id="ch-email"><canvas class="tsig" data-sig="email" aria-hidden="true"></canvas><p class="lbl">01 Email</p><p class="big"><a href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">hello@24ailab.com</a></p>
+<p class="sub">Plug into a line. The cable runs to the operator pill at the top.</p>
+<div class="sbtop"><div class="island sbisl" role="status"><span class="plug" aria-hidden="true"></span><canvas class="icv" aria-hidden="true"></canvas><span class="ilbl">No line connected</span></div></div>
+<svg class="cable" aria-hidden="true"><path class="cbl"/><circle class="pe1" r="5"/><circle class="pe2" r="6"/></svg>
+<div class="plate"><span class="scr s1"></span><span class="scr s2"></span><span class="scr s3"></span><span class="scr s4"></span>
+<p class="plbl mono" aria-hidden="true">24AILAB · Exchange</p>
+<div class="jacks">
+<article class="jt" id="ch-email"><button type="button" class="jh" aria-expanded="false" aria-controls="jd-email"><span class="jl"><span class="mono">01</span> Email</span><canvas class="tsig" data-sig="email" aria-hidden="true"></canvas><span class="sock" aria-hidden="true"></span><span class="sr"> line</span></button><div class="jd" id="jd-email" hidden><p class="big"><a href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">hello@24ailab.com</a></p>
 <p class="note">Best for project ideas and anything with details. We reply within 2 working days.<!-- PLACEHOLDER reply time --></p>
-<div class="row"><a class="cbtn pri" href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">Write an email</a><button type="button" class="cbtn" data-copy="hello@24ailab.com">Copy address</button></div></article>
-<article class="tile" id="ch-call"><canvas class="tsig" data-sig="call" aria-hidden="true"></canvas><p class="lbl">02 Call</p><p class="big" data-placeholder="phone"><a href="tel:+13035550124">+1 (303) 555-0124</a></p>
+<div class="row"><a class="cbtn pri" href="mailto:hello@24ailab.com?subject=Hello%20from%2024ailab.com">Write an email</a><button type="button" class="cbtn" data-copy="hello@24ailab.com">Copy address</button></div></div></article>
+<article class="jt" id="ch-call"><button type="button" class="jh" aria-expanded="false" aria-controls="jd-call"><span class="jl"><span class="mono">02</span> Call</span><canvas class="tsig" data-sig="call" aria-hidden="true"></canvas><span class="sock" aria-hidden="true"></span><span class="sr"> line</span></button><div class="jd" id="jd-call" hidden><p class="big" data-placeholder="phone"><a href="tel:+13035550124">+1 (303) 555-0124</a></p>
 <p class="big" data-placeholder="phone"><a href="tel:+6565550100">+65 6555 0100</a></p>
-<p class="note">Best for a quick conversation. Weekdays, office hours in Colorado or Singapore.</p></article>
-<article class="tile" id="ch-social"><canvas class="tsig" data-sig="social" aria-hidden="true"></canvas><p class="lbl">03 Social</p><ul class="soc">
+<p class="note">Best for a quick conversation. Weekdays, office hours in Colorado or Singapore.</p></div></article>
+<article class="jt" id="ch-social"><button type="button" class="jh" aria-expanded="false" aria-controls="jd-social"><span class="jl"><span class="mono">03</span> Social</span><canvas class="tsig" data-sig="social" aria-hidden="true"></canvas><span class="sock" aria-hidden="true"></span><span class="sr"> line</span></button><div class="jd" id="jd-social" hidden><ul class="soc">
 <li><a href="https://x.com/24ailab" rel="noopener" data-placeholder="social">X <span>@24ailab</span><svg viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 L0 4.00 L2 5.10 L4 6.05 L6 6.71 L8 6.99 L10 6.85 L12 6.31 L14 5.45 L16 4.38 L18 3.25 L20 2.24 L22 1.47 L24 1.05 L26 1.05 L28 1.47 L30 2.24 L32 3.25 L34 4.38 L36 5.45 L38 6.31 L40 6.85 L42 6.99 L44 6.71 L46 6.05 L48 5.10 L50 4.00 L52 2.90 L54 1.95 L56 1.29 L58 1.01 L60 1.15 L62 1.69 L64 2.55 L66 3.62 L68 4.75 L70 5.76 L72 6.53 L74 6.95 L76 6.95 L78 6.53 L80 5.76 L82 4.75 L84 3.62 L86 2.55 L88 1.69 L90 1.15 L92 1.01 L94 1.29 L96 1.95 L98 2.90 L100 4.00" pathLength="1"/></svg></a></li>
 <li><a href="https://instagram.com/24ailab" rel="noopener" data-placeholder="social">Instagram <span>@24ailab</span><svg viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 L0 4.00 L2 5.10 L4 6.05 L6 6.71 L8 6.99 L10 6.85 L12 6.31 L14 5.45 L16 4.38 L18 3.25 L20 2.24 L22 1.47 L24 1.05 L26 1.05 L28 1.47 L30 2.24 L32 3.25 L34 4.38 L36 5.45 L38 6.31 L40 6.85 L42 6.99 L44 6.71 L46 6.05 L48 5.10 L50 4.00 L52 2.90 L54 1.95 L56 1.29 L58 1.01 L60 1.15 L62 1.69 L64 2.55 L66 3.62 L68 4.75 L70 5.76 L72 6.53 L74 6.95 L76 6.95 L78 6.53 L80 5.76 L82 4.75 L84 3.62 L86 2.55 L88 1.69 L90 1.15 L92 1.01 L94 1.29 L96 1.95 L98 2.90 L100 4.00" pathLength="1"/></svg></a></li>
 <li><a href="https://www.linkedin.com/company/24ailab" rel="noopener" data-placeholder="social">LinkedIn <span>24ailab</span><svg viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 L0 4.00 L2 5.10 L4 6.05 L6 6.71 L8 6.99 L10 6.85 L12 6.31 L14 5.45 L16 4.38 L18 3.25 L20 2.24 L22 1.47 L24 1.05 L26 1.05 L28 1.47 L30 2.24 L32 3.25 L34 4.38 L36 5.45 L38 6.31 L40 6.85 L42 6.99 L44 6.71 L46 6.05 L48 5.10 L50 4.00 L52 2.90 L54 1.95 L56 1.29 L58 1.01 L60 1.15 L62 1.69 L64 2.55 L66 3.62 L68 4.75 L70 5.76 L72 6.53 L74 6.95 L76 6.95 L78 6.53 L80 5.76 L82 4.75 L84 3.62 L86 2.55 L88 1.69 L90 1.15 L92 1.01 L94 1.29 L96 1.95 L98 2.90 L100 4.00" pathLength="1"/></svg></a></li>
 <li><a href="https://github.com/24ailab" rel="noopener" data-placeholder="social">GitHub <span>24ailab</span><svg viewBox="0 0 100 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 L0 4.00 L2 5.10 L4 6.05 L6 6.71 L8 6.99 L10 6.85 L12 6.31 L14 5.45 L16 4.38 L18 3.25 L20 2.24 L22 1.47 L24 1.05 L26 1.05 L28 1.47 L30 2.24 L32 3.25 L34 4.38 L36 5.45 L38 6.31 L40 6.85 L42 6.99 L44 6.71 L46 6.05 L48 5.10 L50 4.00 L52 2.90 L54 1.95 L56 1.29 L58 1.01 L60 1.15 L62 1.69 L64 2.55 L66 3.62 L68 4.75 L70 5.76 L72 6.53 L74 6.95 L76 6.95 L78 6.53 L80 5.76 L82 4.75 L84 3.62 L86 2.55 L88 1.69 L90 1.15 L92 1.01 L94 1.29 L96 1.95 L98 2.90 L100 4.00" pathLength="1"/></svg></a></li>
 </ul>
-<p class="note">Follow the work, or send a message. Email is faster for projects.</p></article>
-<article class="tile" id="ch-walk"><canvas class="tsig" data-sig="walk" aria-hidden="true"></canvas><p class="lbl">04 Walk in</p><p class="note">Come by the studio in Colorado or Singapore. Walk-ins are welcome; a heads-up email helps.</p>
-<div class="row"><a class="cbtn" href="#offices">See the offices</a></div></article>
+<p class="note">Follow the work, or send a message. Email is faster for projects.</p></div></article>
+<article class="jt" id="ch-walk"><button type="button" class="jh" aria-expanded="false" aria-controls="jd-walk"><span class="jl"><span class="mono">04</span> Walk in</span><canvas class="tsig" data-sig="walk" aria-hidden="true"></canvas><span class="sock" aria-hidden="true"></span><span class="sr"> line</span></button><div class="jd" id="jd-walk" hidden><p class="note">Come by the studio in Colorado or Singapore. Walk-ins are welcome; a heads-up email helps.</p>
+<div class="row"><a class="cbtn" href="#offices">See the offices</a></div></div></article>
+</div>
 </div>
 </section>
 <section class="sec" id="offices" aria-labelledby="of-h">
@@ -113,8 +105,7 @@
 <p id="copy-live" class="sr" aria-live="polite"></p>
 <script src="/preview/contact/shared/contact.js?v=4"></script>
 <script src="/preview/contact/shared/watches.js?v=2" defer></script>
-<script src="/preview/contact/shared/dock.js?v=1" defer></script>
-<script src="/preview/contact/switchboard/switchboard.js?v=3" defer></script>
+<script src="/preview/contact/switchboard/switchboard.js?v=4" defer></script>
 <script src="/consent.js?v=2" defer></script>
 <script src="/nav.js" defer></script>
 </body>
