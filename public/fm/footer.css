@@ -1,6 +1,6 @@
 /* Site footer + cookie banner for /fm/. Rules below the marker are copied verbatim from /styles.css
    (lines 19-20, 32-36, 53-63, 65-69, 77-85). Keep in sync if the site footer changes. */
-#legal,#cc{--muted2:#8a97a8;--border2:#dfe6ee;--soft:#f4f7fa;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--shadow:0 10px 34px rgba(20,50,100,.18),inset 0 1px 0 rgba(255,255,255,.9);--radius:24px;font-family:var(--font);box-sizing:border-box}
+#legal,#cc{--muted2:#8a97a8;--border2:#dfe6ee;--soft:#f4f7fa;--font:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;--shadow:0 10px 34px rgba(20,50,100,.18),inset 0 1px 0 rgba(255,255,255,.9);--radius:24px;font-family:var(--font);box-sizing:border-box}
 #legal *,#cc *{box-sizing:border-box}
 #legal{position:relative;z-index:5}#cc{z-index:30}
 #legal a{text-decoration:none;font-weight:600}#legal a:hover{text-decoration:underline}

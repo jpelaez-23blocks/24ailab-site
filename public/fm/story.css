@@ -1,8 +1,8 @@
 /* FM story page. Brand tokens from /styles.css (kept local so this page stands alone). */
 :root{--bg:#fff;--text:#1d2a3a;--muted:#64748b;--accent:#1a6fd6;--border:#e3e9f0;--hl:#eaf3ff;
---sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
---serif:"New York",ui-serif,"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
---mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;--box:640px;--s:1}
+--sans:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+--serif:"Outfit",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+--mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,Consolas,monospace;--box:640px;--s:1}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 var(--sans);-webkit-font-smoothing:antialiased}
 body{background-image:radial-gradient(circle at 20% 15%,#eaf3ff 0,transparent 45%),radial-gradient(circle at 85% 80%,#f4f7fa 0,transparent 50%);background-attachment:fixed}
@@ -29,7 +29,7 @@ body{background-image:radial-gradient(circle at 20% 15%,#eaf3ff 0,transparent 45
  .caps .cap{left:22px;right:22px;width:auto;top:max(11vh,64px);transform:translateY(var(--y))}
 }
 .cap .era{font:600 12px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
-.cap h2{font:400 clamp(28px,3.6vw,52px)/1.06 var(--serif);letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
+.cap h2{font:600 clamp(28px,3.6vw,52px)/1.08 var(--serif);letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance}
 .cap .sub{font-size:clamp(15px,1.25vw,18px);color:var(--muted);margin:0;max-width:34ch}
 .try{pointer-events:auto;margin-top:22px;font:600 14px var(--sans);padding:11px 18px 11px 40px;border-radius:999px;border:1px solid var(--border);background:#fff;color:var(--text);cursor:pointer;position:relative;box-shadow:0 6px 18px rgba(20,50,100,.08);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
 .try::before{content:"";position:absolute;left:16px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 0 rgba(26,111,214,.5);animation:ping 2s infinite}
@@ -154,7 +154,7 @@ body.dark .cap h2,body.dark .mark{color:#fff}body.dark .cap .sub{color:#d9f0ee}b
 
 #fin{position:absolute;left:0;right:0;bottom:0;padding:0 6vw max(5vh,env(safe-area-inset-bottom));text-align:center;opacity:0;pointer-events:none;
  background:linear-gradient(transparent,rgba(255,255,255,.85) 30%,#fff 70%)}
-#fin h1{font:400 clamp(28px,4vw,60px)/1.08 var(--serif);letter-spacing:-.025em;max-width:22ch;margin:0 auto 26px;text-wrap:balance;padding-top:10vh}
+#fin h1{font:600 clamp(28px,4vw,60px)/1.1 var(--serif);letter-spacing:-.025em;max-width:22ch;margin:0 auto 26px;text-wrap:balance;padding-top:10vh}
 #fin q{font-style:italic;color:var(--accent);quotes:"\201C" "\201D"}
 .cta{display:inline-flex;gap:8px;align-items:center;font:600 16px var(--sans);color:#fff;background:var(--accent);padding:14px 26px;border-radius:999px;text-decoration:none;box-shadow:0 10px 30px rgba(26,111,214,.35);transition:transform .2s cubic-bezier(.2,.8,.2,1),box-shadow .2s}
 .cta:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(26,111,214,.42)}
