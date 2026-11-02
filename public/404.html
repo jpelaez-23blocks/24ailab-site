@@ -16,40 +16,45 @@
 <link rel="stylesheet" href="/styles.css?v=5">
 <meta name="theme-color" content="#ffffff">
 <style>
-main.nf{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;box-sizing:border-box;min-height:calc(100svh - 180px);padding:32px 18px;overflow:hidden}
-.nf .tv{position:relative;width:100%;max-width:720px;aspect-ratio:4/3;border-radius:var(--radius);overflow:hidden;background:#11161d;box-shadow:var(--shadow);border:1px solid var(--border)}
-@media (max-width:600px){.nf .tv{aspect-ratio:3/4}}
-.nf canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;opacity:.55}
-.nf .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px);pointer-events:none}
-.nf .bar{position:absolute;left:0;right:0;height:18%;top:-20%;background:linear-gradient(transparent,rgba(255,255,255,.08),transparent);animation:roll 6s linear infinite}
+html,body{background:#0b0f15}
+body{min-height:100svh;display:flex;flex-direction:column}
+.bg{position:fixed;inset:0;height:100lvh;z-index:0;overflow:hidden;background:#11161d;pointer-events:none}
+.bg canvas{position:absolute;inset:0;width:100%;height:100%;image-rendering:pixelated;opacity:.55}
+.bg .scan{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(0,0,0,.28) 0 1px,transparent 1px 3px)}
+.bg .bar{position:absolute;left:0;right:0;height:18%;top:-20%;background:linear-gradient(transparent,rgba(255,255,255,.08),transparent);animation:roll 6s linear infinite}
 @keyframes roll{to{top:110%}}
-.nf .in{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px;color:#fff;background:radial-gradient(ellipse 55% 45% at 50% 50%,rgba(10,14,20,.78),rgba(10,14,20,0) 100%)}
-.nf .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.32em;color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.35);padding:6px 12px;border-radius:4px;background:rgba(0,0,0,.35)}
+body.g .bg{filter:contrast(1.25) brightness(1.15)}
+header.site,footer.foot{position:relative;z-index:2;background:rgba(10,14,20,.72)!important;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-color:rgba(255,255,255,.12)!important;color:#e8edf3}
+header.site a,header.site .ttl,footer.foot,footer.foot a,footer.foot .lnk,footer.foot h2,footer.foot .ftag,footer.foot .fcopy{color:#e8edf3!important}
+header.site svg,footer.foot svg{color:#e8edf3!important}
+footer.foot h2,footer.foot .ftag,footer.foot .fcopy{opacity:.75}
+.navbtn span,.navbtn span:before,.navbtn span:after{background:#e8edf3!important}
+@media (max-width:719px){header.site .nav{background:rgba(10,14,20,.95)!important}}
+main.nf{position:relative;z-index:1;flex:1;display:flex;align-items:center;justify-content:center;min-height:calc(100svh - 120px);padding:32px 18px;box-sizing:border-box;width:100%}
+.nf .in{display:flex;flex-direction:column;align-items:center;text-align:center;padding:48px 28px;color:#fff;background:radial-gradient(ellipse 50% 50% at 50% 50%,rgba(10,14,20,.8),rgba(10,14,20,0) 100%)}
+.nf .tag{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.32em;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.35);padding:6px 12px;border-radius:4px;background:rgba(0,0,0,.45)}
 .nf .tag i{display:inline-block;width:7px;height:7px;border-radius:50%;background:#e5484d;margin-right:8px;vertical-align:1px;animation:blink 1.2s steps(2) infinite}
 @keyframes blink{50%{opacity:0}}
-.nf h1{position:relative;margin:18px 0 6px;font-size:clamp(84px,22vw,168px);font-weight:300;line-height:1;letter-spacing:.02em;text-shadow:-2px 0 rgba(255,40,80,.55),2px 0 rgba(40,200,255,.55)}
-.nf.g h1{transform:translateX(3px) skewX(-4deg);text-shadow:-6px 0 rgba(255,40,80,.8),6px 0 rgba(40,200,255,.8)}
-.nf.g .tv{filter:contrast(1.25) brightness(1.15)}
-.nf p.l{margin:0 0 22px;font-size:17px;color:rgba(255,255,255,.85);max-width:30ch}
+.nf h1{margin:18px 0 6px;font-size:clamp(96px,26vw,200px);font-weight:300;line-height:1;letter-spacing:.02em;text-shadow:-2px 0 rgba(255,40,80,.55),2px 0 rgba(40,200,255,.55)}
+body.g .nf h1{transform:translateX(3px) skewX(-4deg);text-shadow:-6px 0 rgba(255,40,80,.8),6px 0 rgba(40,200,255,.8)}
+.nf p.l{margin:0 0 22px;font-size:18px;color:rgba(255,255,255,.9);max-width:30ch;text-shadow:0 1px 8px #000}
 .nf .cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-@media (prefers-reduced-motion:reduce){.nf .bar,.nf .tag i{animation:none}.nf .bar{display:none}}
+@media (prefers-reduced-motion:reduce){.bg .bar{display:none}.nf .tag i{animation:none}}
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><canvas id="noise" width="160" height="100"></canvas><div class="scan"></div><div class="bar"></div></div>
 <header class="site"><a class="ttl" href="/" aria-label="2xAI Lab"><svg class="logo lg" viewBox="-1.11 13.89 115.03 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44.7" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M50.90 33.10 L50.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M56.40 33.10 L56.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.40" cy="27.60" r="1.77" fill="#1a6fd6"/><g transform="translate(69.51,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg><svg class="logo sm" viewBox="-1.11 13.89 88.63 33.22" aria-hidden="true" focusable="false"><path d="M0.00 22.00 L0.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.00 16.00 L8.00 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.00 28.00 L32.00 46.00" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M29.00 28.50 L20.50 38.50" fill="none" stroke="#1a6fd6" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(43.11,0)"><path d="M0.00 22.00 L0.00 46.00 L8.50 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19.20" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/><path d="M25.40 33.10 L25.40 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><path d="M30.90 22.00 L30.90 46.00" fill="none" stroke="currentColor" stroke-width="2.22" stroke-linecap="round" stroke-linejoin="round"/><circle cx="37.10" cy="39.80" r="6.2" fill="none" stroke="currentColor" stroke-width="2.22"/></g></svg></a><button type="button" class="navbtn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span></button><nav id="site-nav" class="nav" aria-label="Main"><a href="/">Home</a><a href="/lab">Lab</a><a href="/projects">Projects</a><a href="/contact">Contact</a></nav></header>
 <main class="nf" id="nf">
-<div class="tv">
-<canvas id="noise" width="160" height="120" aria-hidden="true"></canvas>
-<div class="scan" aria-hidden="true"></div><div class="bar" aria-hidden="true"></div>
 <div class="in">
 <span class="tag"><i aria-hidden="true"></i>NO SIGNAL</span>
 <h1>404</h1>
 <p class="l">Signal lost. This page drifted off the dial.</p>
 <div class="cta"><a class="btn pri" href="/">Back to Home</a><a class="btn" href="/projects">See the projects</a></div>
-</div></div>
+</div>
 </main>
 <script>
-(function(){var c=document.getElementById('noise'),x=c.getContext('2d'),w=c.width,h=c.height,img=x.createImageData(w,h),d=new Uint32Array(img.data.buffer),m=document.getElementById('nf'),rm=matchMedia('(prefers-reduced-motion: reduce)'),t=0,id=0;
+(function(){var c=document.getElementById('noise'),x=c.getContext('2d'),w=c.width,h=c.height,img=x.createImageData(w,h),d=new Uint32Array(img.data.buffer),m=document.body,rm=matchMedia('(prefers-reduced-motion: reduce)'),t=0,id=0;
 function draw(){for(var i=0;i<d.length;i++){var v=Math.random()*255|0;d[i]=0xff000000|v<<16|v<<8|v}x.putImageData(img,0,0)}
 function loop(ts){id=requestAnimationFrame(loop);if(ts-t<50)return;t=ts;draw();if(Math.random()<.025){m.classList.add('g');setTimeout(function(){m.classList.remove('g')},90+Math.random()*120)}}
 function go(){cancelAnimationFrame(id);draw();if(!rm.matches&&!document.hidden)id=requestAnimationFrame(loop)}
