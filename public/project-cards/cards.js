@@ -44,7 +44,8 @@
       '<div class="pc-body"><ul class="pc-meta" aria-label="Era and tags">' + meta + '</ul>' +
       '<h2 id="pc-' + esc(p.id) + '">' + esc(p.name) + '</h2><p class="pc-pitch">' + esc(p.pitch) + '</p>' +
       (p.why ? '<p><strong>Why.</strong> ' + esc(p.why) + '</p>' : '') + (p.how ? '<p><strong>How.</strong> ' + esc(p.how) + '</p>' : '') +
-      '<div class="pc-cta"><a class="btn pri" href="' + esc(p.url) + '">' + esc(p.cta || ('Open ' + p.name)) + ' <span aria-hidden="true">↗</span></a>' +
+      '<div class="pc-cta"><a class="btn pri" href="' + esc(p.url) + '">' + esc(p.cta || ('Open ' + p.name)) + (/^https?:/.test(p.url) ? ' <span aria-hidden="true">↗</span>' : '') + '</a>' +
+      (p.ext ? '<a class="btn" href="' + esc(p.ext) + '">' + esc(p.extLabel || 'Visit') + ' <span aria-hidden="true">↗</span></a>' : '') +
       (p.story ? '<a class="btn" href="' + esc(p.story) + '">Project story <span class="sr">of ' + esc(p.name) + '</span></a>' : '') + '</div>' +
       gallery(p) + '</div></article>';
   }).join('');
