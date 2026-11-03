@@ -1,7 +1,9 @@
 (function(){
   var KEY='cookie-consent';
   var GA_ID='G-XXXXXXXXXX'; // placeholder, set the real Measurement ID when GA is added
+  function consent(v){if(typeof window.gtag==='function')window.gtag('consent','update',{ad_storage:v,ad_user_data:v,ad_personalization:v,analytics_storage:v})}
   function loadAnalytics(){
+    consent('granted');
     // Hook: runs only after Accept. GA is not loaded yet.
     // To enable later, inject https://www.googletagmanager.com/gtag/js?id=GA_ID here.
     window.__analyticsReady=GA_ID;
@@ -14,7 +16,7 @@
     el=document.createElement('div');el.id='cc';el.setAttribute('role','dialog');el.setAttribute('aria-label','Cookie consent');el.hidden=true;
     el.innerHTML='<p>We may use cookies for anonymous, aggregate usage stats. See our <a href="/privacy">Privacy Policy</a>.</p><div class="b"><button type="button" class="no">Decline</button><button type="button" class="ok">Accept</button></div>';
     el.querySelector('.ok').onclick=function(){set('accepted');el.hidden=true;loadAnalytics()};
-    el.querySelector('.no').onclick=function(){set('declined');el.hidden=true};
+    el.querySelector('.no').onclick=function(){set('declined');el.hidden=true;consent('denied')};
     document.body.appendChild(el);
   }
   window.openCookieSettings=function(){el.hidden=false;el.querySelector('.ok').focus()};
